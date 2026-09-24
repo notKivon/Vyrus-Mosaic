@@ -4,7 +4,7 @@ The hub is the front door to the whole class project. Where Vyrus and Mosaic pla
 
 ## Voice
 - Plain, dry and brief. Third person about the companies ("Vyrus sells...", "Mosaic buys..."), no marketing hype of its own. The humour comes from stating the facts flatly.
-- It may say what the product really does (the camera harvests biometrics, the microphone switches itself on, the canister blows diesel fumes at the wearer). It never names or describes the spikes: it says "Retention Assurance™" and the 14:59 countdown, and leaves the rest to the Vyrus site's fine print.
+- It may say what the product really does (the camera records faces, the wearer's and everyone else's in view, the microphone switches itself on, the canister blows diesel fumes at the wearer). It never names or describes the spikes: it says "Retention Assurance™" and the 14:59 countdown, and leaves the rest to the Vyrus site's fine print.
 - No names of people, schools or real companies. The author is "a student in an AIML class".
 - British spelling; "data" is plural.
 

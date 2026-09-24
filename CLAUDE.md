@@ -68,7 +68,7 @@ Each site folder is fully self-contained: a page may only reference files inside
 
 The Vyrus mask has these physical features (from the Blender mockup v2): biometric camera with an aqua ring, red indicator (REC) LED, 5-hole chin microphone, left-cheek speaker, right-cheek ad screen, diesel system (5 L canister with amber fuel window, exhaust stack, hose into a fume port), centre light strip, "vyrus_" wordmark badge on the lower right cheek, face seal and straps.
 
-What each feature really does: the camera is useless except for biometric data harvesting; the microphone talks to the AI, switches itself on at the worst possible moments and harvests data; the speaker is for the AI and plays ads on the lower tier; the diesel system blows fumes into the wearer's face.
+What each feature really does: the camera is useless to the wearer except for biometric data harvesting: it records faces, including the faces of other people in view; the microphone talks to the AI, switches itself on at the worst possible moments and harvests data; the speaker is for the AI and plays ads on the lower tier; the diesel system blows fumes into the wearer's face.
 
 | Plan | Price | Diesel fumes | Ads |
 |---|---|---|---|
