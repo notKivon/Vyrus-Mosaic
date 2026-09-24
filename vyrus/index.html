@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Vyrus — breathe smarter</title>
+  <meta name="description" content="Vyrus is the AI-native face mask that personalises every breath. Cloud-enabled, always-on, agentic. Plans from $4.99 a month.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +13,77 @@
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
 </head>
 <body>
-  <main class="container">
-    <h1><a class="vy-wordmark" href="/">vyrus<span class="vy-cursor">_</span></a></h1>
-    <p><a class="vy-btn vy-btn-primary" href="#">Get Vyrus</a></p>
-    <p class="t-body-s">Vyrus and Mosaic are fictional. Made for a school AIML project; nothing here is for sale.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="vy-wordmark" href="/" aria-label="Vyrus home">vyrus<span class="vy-cursor" aria-hidden="true">_</span></a>
+      <ul class="nav-links t-spec">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <a class="vy-btn vy-btn-primary vy-btn-sm" href="#pricing" data-purchase>Get Vyrus</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="band-aqua hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="t-label">AI-native · Cloud-enabled · V1.0</p>
+          <h1 class="t-display-xl" id="hero-title"><span class="js-type">breathe smarter</span><span class="vy-cursor blink" aria-hidden="true">_</span></h1>
+          <p class="t-heading hero-sub">the face mask that knows you better than you do.</p>
+          <p class="t-body measure">Vyrus is an AI-native, cloud-enabled, always-on face mask with an agentic assistant that personalises every breath before you take it.</p>
+          <div class="btn-row">
+            <a class="vy-btn vy-btn-primary" href="#pricing" data-purchase>Start breathing smarter</a>
+            <a class="vy-btn vy-btn-ghost" href="#specs">See the specs</a>
+          </div>
+          <div class="chip-row">
+            <span class="vy-chip vy-chip-aqua">AI-native</span>
+            <span class="vy-chip">Always on</span>
+            <span class="vy-chip vy-chip-aqua">Agentic</span>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img src="assets/img/mask-hero.jpg"
+               srcset="assets/img/mask-hero-640.jpg 640w, assets/img/mask-hero.jpg 1280w"
+               sizes="(min-width: 1200px) 540px, (min-width: 800px) 45vw, 100vw"
+               width="1280" height="960" fetchpriority="high"
+               alt="Vyrus mask, three-quarter view, aqua shell with diesel canister, on a pale display plinth">
+        </figure>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="vy-wordmark" href="/" aria-label="Vyrus home">vyrus<span class="vy-cursor" aria-hidden="true">_</span></a>
+      <ul class="footer-links t-spec">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="footer-fine t-body-s">
+        <p>Vyrus is a member of the <a href="#partner-url-pending">Mosaic Partner Network</a>.</p>
+        <p>Ambient Particulate Experience™ intensity varies by plan. EasyBreath Pro™ sold separately.</p>
+        <p>© 2026 Vyrus</p>
+        <p>Vyrus and Mosaic are fictional. Made for a school AIML project; nothing here is for sale.</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="vy-dialog" id="purchase" aria-labelledby="purchase-title">
+    <div class="vy-dialog-inner">
+      <p class="t-label">Provisioning</p>
+      <h2 class="t-heading" id="purchase-title">your face is being provisioned<span class="vy-cursor" aria-hidden="true">_</span></h2>
+      <p class="t-body">Vyrus is enrolling in limited waves. Your place in the queue has been personalised.</p>
+      <button class="vy-btn vy-btn-secondary" type="button" data-close>Close</button>
+      <p class="t-body-s vy-dialog-foot">Vyrus and Mosaic are fictional. Made for a school AIML project; nothing here is for sale.</p>
+    </div>
+  </dialog>
 </body>
 </html>

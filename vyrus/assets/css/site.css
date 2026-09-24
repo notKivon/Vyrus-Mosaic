@@ -1,13 +1,85 @@
 /* Vyrus page layout. Colours, type and components live in tokens.css and components.css. */
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--space-16) + var(--space-4))}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-sans)}
 img{max-width:100%;height:auto;display:block}
+h1,h2,h3,p,figure,ul{margin:0}
+a{color:inherit}
 a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+a.vy-btn:not(.vy-btn-ghost){text-decoration:none}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 
 .container{max-width:1200px;margin:0 auto;padding:0 var(--space-6)}
-@media (max-width:640px){.container{padding:0 var(--space-4)}}
+.measure{max-width:60ch}
+.section{padding:var(--space-16) 0}
+.btn-row,.chip-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3)}
+.chip-row{gap:var(--space-2)}
+@media (max-width:640px){
+  .container{padding:0 var(--space-4)}
+  .section{padding:var(--space-12) 0}
+}
+
+.skip-link{position:absolute;left:var(--space-4);top:calc(-1 * var(--space-16));z-index:30;background:var(--surface-inverse);color:var(--ink-inverse);padding:var(--space-2) var(--space-4);border-radius:var(--radius-md)}
+.skip-link:focus{top:var(--space-2)}
 
 /* Wordmark */
 .vy-wordmark{font-family:var(--font-mono);font-weight:500;font-size:22px;line-height:32px;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;display:inline-block;min-width:72px}
 .vy-wordmark .vy-cursor{color:var(--aqua-deep)}
+
+/* Nav */
+.site-nav{position:sticky;top:0;z-index:20;background:var(--surface-raised);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;gap:var(--space-8);min-height:var(--space-16)}
+.nav-links{list-style:none;padding:0;display:flex;gap:var(--space-6);margin-left:auto}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--aqua-strong);text-decoration:underline;text-underline-offset:4px}
+@media (max-width:640px){
+  .nav-links{display:none}
+  .nav-inner{justify-content:space-between}
+}
+
+/* Full-bleed aqua band: text on aqua is always --on-aqua */
+.band-aqua{background:var(--aqua);color:var(--on-aqua)}
+.band-aqua .vy-btn-ghost{color:var(--on-aqua)}
+.band-aqua .vy-cursor{color:var(--surface-raised)}
+.band-aqua .vy-btn-primary:hover:not([disabled]){background:var(--surface-raised);color:var(--ink)}
+.band-aqua .vy-btn-primary:hover:not([disabled])::after{color:var(--aqua-deep)}
+
+/* Hero */
+.hero{padding:var(--space-16) 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--space-12);align-items:center}
+.hero-copy{display:grid;gap:var(--space-6);justify-items:start}
+.hero-copy h1{position:relative}
+.hero-sub{max-width:24ch}
+.hero-media{border-radius:var(--radius-lg);overflow:hidden;background:var(--surface-raised)}
+@media (max-width:799px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:var(--space-8)}
+}
+@media (max-width:640px){
+  .hero{padding:var(--space-12) 0}
+  .hero-copy{gap:var(--space-4)}
+  .hero-sub{font-size:20px;line-height:28px}
+}
+
+/* Hero typing enhancement (site.js); the real text stays in place, transparent, so layout never shifts */
+.is-typing>:not(.type-overlay){color:transparent}
+.type-overlay{position:absolute;inset:0}
+
+/* Footer */
+.site-footer{background:var(--surface-inverse);color:var(--ink-inverse);padding:var(--space-12) 0}
+.site-footer .vy-wordmark{color:var(--ink-inverse)}
+.site-footer .vy-wordmark .vy-cursor{color:var(--aqua)}
+.site-footer a:focus-visible{outline-color:var(--aqua)}
+.footer-inner{display:grid;gap:var(--space-6)}
+.footer-links{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-6)}
+.footer-links a{text-decoration:none}
+.footer-links a:hover,.footer-fine a{color:var(--aqua);text-decoration:underline;text-underline-offset:3px}
+.footer-fine{display:grid;gap:var(--space-2);max-width:60ch;border-top:1px solid var(--line-strong);padding-top:var(--space-6)}
+
+/* Purchase dialog */
+.vy-dialog{border:0;padding:0;border-radius:var(--radius-lg);background:var(--surface-raised);color:var(--ink);box-shadow:var(--shadow-card);width:min(480px,calc(100% - 2 * var(--space-4)));max-width:none}
+.vy-dialog::backdrop{background:color-mix(in srgb,var(--surface-inverse) 72%,transparent)}
+.vy-dialog-inner{padding:var(--space-8);display:grid;gap:var(--space-4);justify-items:start}
+.vy-dialog .t-label{color:var(--aqua-strong)}
+.vy-dialog .vy-cursor{color:var(--aqua-deep)}
+.vy-dialog-foot{color:var(--ink-muted);border-top:1px solid var(--line);padding-top:var(--space-4);width:100%}
+@media (max-width:640px){.vy-dialog-inner{padding:var(--space-6)}}
