@@ -24,7 +24,7 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 
 /* Lockup: mark + "Mosaic", one tile width apart */
 .lockup{display:inline-flex;align-items:center;gap:var(--space-2);min-width:96px;padding:var(--space-1) 0;color:var(--ink);text-decoration:none;font-family:var(--font-serif);font-weight:600;font-size:24px;line-height:28px;letter-spacing:-0.01em}
-.lockup svg{width:28px;height:28px;flex:none}
+.lockup img{width:28px;height:28px;flex:none;display:block}
 
 /* Nav */
 .site-nav{position:sticky;top:0;z-index:20;background:var(--ground);border-bottom:1px solid var(--line)}
@@ -54,10 +54,10 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
   .hero-copy .t-lede{font-size:20px;line-height:28px}
 }
 
-/* SVG tile fills (hero, how it works, 404) */
-.tn{fill:var(--navy)}
-.tb{fill:var(--blue)}
-.ts{fill:var(--stone)}
+/* Tile fills: SVG shapes (hero, 404) and plain HTML cells (how it works) */
+.tn{fill:var(--navy);background:var(--navy)}
+.tb{fill:var(--blue);background:var(--blue)}
+.ts{fill:var(--stone);background:var(--stone)}
 .tt{fill:var(--teal)}
 .tk{fill:var(--brass)}
 .tf{fill:var(--flag)}
@@ -84,3 +84,28 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 .mo-dialog .t-label{color:var(--brass-strong)}
 .mo-dialog-foot{color:var(--ink-muted);border-top:1px solid var(--line);padding-top:var(--space-4);width:100%}
 @media (max-width:640px){.mo-dialog-inner{padding:var(--space-6)}}
+
+/* How it works: body left, converging tile grid right */
+.how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:var(--space-8) var(--space-12);align-items:start}
+.how-title{grid-column:1 / -1;max-width:18ch}
+.how-copy{display:grid;gap:var(--space-4)}
+.converge{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(96px,auto);gap:var(--space-2)}
+.converge .cell{border-radius:var(--radius-sm)}
+.converge-wide{grid-column:span 2;justify-content:space-between;align-items:flex-start}
+.converge-wide .t-data{color:var(--ink-muted)}
+.converge-key{grid-column:span 2;grid-row:span 2;justify-content:space-between}
+@media (max-width:959px){.how{grid-template-columns:minmax(0,1fr)}.converge{max-width:440px}}
+@media (max-width:640px){.converge{grid-auto-rows:minmax(80px,auto)}.converge .mo-tile{padding:var(--space-3)}}
+
+/* Products: two raised panels split by a 1 px rule */
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);box-shadow:0 0 0 1px var(--line)}
+.product{background:var(--surface-raised);padding:var(--space-8);display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-4)}
+.product .t-heading{max-width:20ch}
+.tile-list{list-style:none;padding:0;display:grid;gap:var(--space-3);color:var(--ink-muted)}
+.tile-list li{display:grid;grid-template-columns:8px minmax(0,1fr);gap:var(--space-3);align-items:baseline}
+.tile-list li::before{content:"";width:8px;height:8px;border-radius:1px;background:var(--stone);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.product .mo-btn-quiet{margin-top:auto}
+@media (max-width:767px){
+  .products{grid-template-columns:minmax(0,1fr)}
+  .product{padding:var(--space-6)}
+}
