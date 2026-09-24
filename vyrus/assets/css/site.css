@@ -141,3 +141,33 @@ a.vy-btn:not(.vy-btn-ghost){text-decoration:none}
 .vy-dialog .vy-cursor{color:var(--aqua-deep)}
 .vy-dialog-foot{color:var(--ink-muted);border-top:1px solid var(--line);padding-top:var(--space-4);width:100%}
 @media (max-width:640px){.vy-dialog-inner{padding:var(--space-6)}}
+
+/* EasyBreath Pro panel */
+.easybreath{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:var(--space-6);justify-items:stretch}
+.easybreath-copy{display:grid;gap:var(--space-3);max-width:60ch}
+.easybreath .vy-tier-head{justify-content:flex-start;flex-wrap:wrap}
+.easybreath-buy{display:grid;gap:var(--space-3);justify-items:start}
+@media (max-width:640px){.easybreath{grid-template-columns:minmax(0,1fr)}}
+
+/* Plan comparison: native <details>, works without JS */
+.compare>summary{list-style:none;cursor:pointer}
+.compare>summary::-webkit-details-marker{display:none}
+.compare>summary::after{content:"+";font-weight:600}
+.compare[open]>summary::after{content:"\2212"}
+.compare .when-open,.compare[open] .when-closed{display:none}
+.compare[open] .when-open{display:inline}
+.compare-body{display:grid;gap:var(--space-4);margin-top:var(--space-6)}
+.table-scroll{overflow-x:auto;background:var(--surface-raised);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.table-scroll:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.compare-table{width:100%;min-width:600px;border-collapse:collapse;font-family:var(--font-sans);font-size:15px;line-height:22px}
+.compare-table caption{text-align:left;padding:var(--space-6) var(--space-6) var(--space-3);color:var(--ink-muted)}
+.compare-table th,.compare-table td{padding:var(--space-3) var(--space-6);text-align:left;border-top:1px solid var(--line);vertical-align:top}
+.compare-table thead th{font-family:var(--font-mono);font-weight:500;font-size:13px;border-top:0}
+.compare-table tbody th{font-weight:600}
+.compare-table td{font-family:var(--font-mono);font-size:13px}
+.compare-table .is-pro{background:var(--aqua-soft)}
+.compare-table .is-na{color:var(--ink-muted)}
+.disclosure{color:var(--ink-muted);max-width:80ch}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.compare-table td{white-space:nowrap}
+@media (max-width:640px){.compare-table th,.compare-table td{padding:var(--space-3) var(--space-4)}.compare-table caption{padding:var(--space-4) var(--space-4) var(--space-2)}}

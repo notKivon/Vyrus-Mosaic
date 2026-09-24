@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 8b — Build the comparison, EasyBreath panel and sharper retention copy
-**Next step:** 9 — Mosaic shell + hero + proof row (start of Session 2)
-**Last verified healthy:** 2026-09-24 HKT, step 8 (Vyrus site complete: all pages 360/768/1280, contrast, word grep, links, console clean)
+**Current step:** 9 — Mosaic shell + hero + proof row (start of Session 2)
+**Next step:** 10 — How it works + products
+**Last verified healthy:** 2026-09-24 HKT, step 8b (comparison + EasyBreath panel at 360/768/1280, keyboard toggle, word grep, console clean)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -21,7 +21,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/vyrus-brand.md. Do not open docs/mosaic-brand
 - [x] 7. **`account.html` + `404.html`.** RenewalBanner with live countdown (static 14:59 without JS), chips, device and Sponsored Moment cards; 404 page. Test countdown, JS-off rendering. Commit.
 - [x] 8. **Vyrus polish and session hand-off.** Titles, meta descriptions, favicon, OG tags, `noindex` meta on all pages; check contrast of any pairing not in the brand doc; grep the site for `TODO`, `lorem`, `diesel`, `fume`, `spike`, emoji (must be none in visible copy); console clean; all internal links resolve. Update Open items and the Challenges log. Commit and push. **End of Session 1.**
 - [x] 8a. **Spec change (Kevin's request):** sharper Retention Assurance™ mentions, EasyBreath Pro™ panel, expandable plan comparison, and a fine-print disclosure that names the spikes plainly. Brand doc + CLAUDE.md updated. Commit.
-- [ ] 8b. **Build 8a on index.html.** Retention band body, stage readout row, EasyBreath panel, `<details>` comparison table + disclosure. Test at 360/768/1280, keyboard, JS off. Re-run the step 8 word grep; the plain word may appear only in the disclosure. Commit and push.
+- [x] 8b. **Build 8a on index.html.** Retention band body, stage readout row, EasyBreath panel, `<details>` comparison table + disclosure. Test at 360/768/1280, keyboard, JS off. Re-run the step 8 word grep; the plain word may appear only in the disclosure. Commit and push.
 
 ## Session 2 — Mosaic site, deploy, hand-back
 Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand.md.
@@ -57,6 +57,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — "Your account" was added to the footer links on every page.
 - 2026-09-24 HKT — Step 8 checks: every colour pairing on the Vyrus site measured at 5.8:1 or better (lowest `--rec-strong` on `--surface-sunken`); no banned words in rendered visible text (they appear only in class names and alt text); no emoji; all internal links and anchors resolve; `noindex` meta on all three pages.
 - 2026-09-24 HKT — Kevin asked for more direct spike and EasyBreath Pro™ mentions plus a full plan comparison. Decision: the euphemisms stay in headlines and cards, but get pointed ("through the face seal", "after 14:59"); the plain word "spikes" appears once, in a fine-print disclosure under the comparison table, like a buried legal clause. The no-injury rule is unchanged: text only, never drawn.
+- 2026-09-24 HKT — The plan comparison uses native `<details>`/`<summary>` (no JS; Enter/Space toggle it; the label switches between "Compare all plans" and "Hide comparison" via CSS). The table keeps a 600 px minimum width and scrolls inside a focusable region on phones. Pro column shaded `--aqua-soft` (muted text on it measures 6.1:1). "Personalisation: Standard / Priority / Priority" extends the Pro bullet's "Priority Personalisation"; all other values come straight from the product facts.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
