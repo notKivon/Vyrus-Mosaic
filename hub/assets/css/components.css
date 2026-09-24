@@ -18,7 +18,8 @@
 
 /* Specimen details borrowed from each brand */
 .vy-cursor{color:var(--vy-raised)}
-.lockup{display:inline-flex;align-items:center;gap:var(--space-2);color:var(--mo-ink)}
+.lockup{display:inline-flex;align-items:flex-end;gap:var(--mo-wordmark-gap);color:var(--mo-ink)}
+.lockup > span{display:block;transform:translateY(0.128em)}
 .lockup img{width:28px;height:28px;flex:none}
 
 /* Fact list inside a company card */
