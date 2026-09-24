@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Your Vyrus</title>
+  <meta name="description" content="Your Vyrus account: plan, device status and Sponsored Moments, all personalised and always on.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=Martian+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-nav">
+    <nav class="container nav-inner" aria-label="Main">
+      <a class="vy-wordmark" href="/" aria-label="Vyrus home">vyrus<span class="vy-cursor" aria-hidden="true">_</span></a>
+      <ul class="nav-links t-spec">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#specs">Specs</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+      </ul>
+      <a class="vy-btn vy-btn-secondary vy-btn-sm" href="index.html#pricing">See plans</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="band-aqua account-top">
+      <div class="container account-top-inner">
+        <section class="vy-renew" role="alert" aria-labelledby="renew-title">
+          <svg class="vy-renew-spikes" aria-hidden="true" preserveAspectRatio="xMinYMin slice" viewBox="0 0 1600 10">
+            <defs><pattern id="spk" width="16" height="10" patternUnits="userSpaceOnUse"><path d="M0 0h12l-6 10z"/></pattern></defs>
+            <rect width="1600" height="10" fill="url(#spk)"/></svg>
+          <div class="vy-renew-body">
+            <h3 id="renew-title">Your journey is paused.</h3>
+            <p>Your last payment didn’t go through. Renew to keep Retention Assurance™ dormant.</p>
+          </div>
+          <div class="vy-renew-clock"><small>Reminders begin in</small><span data-countdown>14:59</span></div>
+          <a class="vy-btn vy-btn-primary" href="index.html#pricing" data-purchase>Renew now</a>
+        </section>
+
+        <div class="greeting">
+          <h1 class="t-heading">Good morning.</h1>
+          <div class="chip-row">
+            <span class="vy-chip">Plan: Lite</span>
+            <span class="vy-chip vy-chip-lapsed">Journey paused</span>
+            <span class="vy-chip vy-chip-rec">Mic live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section account-cards" aria-label="Your device">
+      <div class="container stack">
+        <div class="account-grid">
+          <article class="card">
+            <h2 class="t-title">Device</h2>
+            <img class="device-img" src="assets/img/mask-front-640.jpg" width="640" height="480" loading="lazy"
+                 alt="Vyrus mask, front view, showing the lens, cheek display and chin microphone">
+            <div class="vy-fume"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b></i>Particulate: continuous</div>
+            <div class="core-row">
+              <span class="t-spec">Vyrus Core™</span>
+              <span class="vy-chip vy-chip-diesel">62%</span>
+            </div>
+          </article>
+          <article class="card">
+            <h2 class="t-title">Sponsored Moment</h2>
+            <div class="ad-screen t-spec">
+              <p class="t-heading">upgrade<br>to pro<span class="vy-cursor" aria-hidden="true">_</span></p>
+              <p>sponsored · 0:15</p>
+            </div>
+            <p class="t-body">Pro members never see a Sponsored Moment. This has been one of them.</p>
+            <a class="vy-btn vy-btn-secondary" href="index.html#pricing" data-purchase>Upgrade to Pro</a>
+          </article>
+        </div>
+        <p class="t-body-s account-note">Renewing restores your journey instantly. Retention Assurance™ returns to dormant.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="vy-wordmark" href="/" aria-label="Vyrus home">vyrus<span class="vy-cursor" aria-hidden="true">_</span></a>
+      <ul class="footer-links t-spec">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#specs">Specs</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="account.html">Your account</a></li>
+      </ul>
+      <div class="footer-fine t-body-s">
+        <p>Vyrus is a member of the <a href="#partner-url-pending">Mosaic Partner Network</a>.</p>
+        <p>Ambient Particulate Experience™ intensity varies by plan. EasyBreath Pro™ sold separately.</p>
+        <p>© 2026 Vyrus</p>
+        <p>Vyrus and Mosaic are fictional. Made for a school AIML project; nothing here is for sale.</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="vy-dialog" id="purchase" aria-labelledby="purchase-title">
+    <div class="vy-dialog-inner">
+      <p class="t-label">Provisioning</p>
+      <h2 class="t-heading" id="purchase-title">your face is being provisioned<span class="vy-cursor" aria-hidden="true">_</span></h2>
+      <p class="t-body">Vyrus is enrolling in limited waves. Your place in the queue has been personalised.</p>
+      <button class="vy-btn vy-btn-secondary" type="button" data-close>Close</button>
+      <p class="t-body-s vy-dialog-foot">Vyrus and Mosaic are fictional. Made for a school AIML project; nothing here is for sale.</p>
+    </div>
+  </dialog>
+</body>
+</html>

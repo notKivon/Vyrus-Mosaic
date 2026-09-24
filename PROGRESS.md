@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 7 — `account.html` + `404.html`
-**Next step:** 8 — Vyrus polish and session hand-off
-**Last verified healthy:** 2026-09-24 HKT, step 6 (pricing + retention at 360/768/1280, prices checked, console clean)
+**Current step:** 8 — Vyrus polish and session hand-off
+**Next step:** 9 — Mosaic shell + hero + proof row (Session 2)
+**Last verified healthy:** 2026-09-24 HKT, step 7 (account + 404 at 360/768/1280, countdown ticks, console clean)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -18,7 +18,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/vyrus-brand.md. Do not open docs/mosaic-brand
 - [x] 4. **Vyrus shell + hero.** `site.css` base (box-sizing, body on `--ground`, container, section spacing, nav, footer), `site.js` (cursor typing enhancement, purchase dialog), nav, hero, footer with fictional line and `#partner-url-pending` link, the purchase dialog. Test at 360/768/1280 px, keyboard-only through nav and dialog, reduced motion. Commit.
 - [x] 5. **Features + stage sections.** Features grid and the `.theme-deep` stage with spec readout and the three renders. Test responsive, image sizes, alt text. Commit.
 - [x] 6. **Pricing + retention band.** Three TierCards exactly as specified, EasyBreath line under Max, footnotes, retention band. Check every price against CLAUDE.md. Test phone order (Pro first). Commit.
-- [ ] 7. **`account.html` + `404.html`.** RenewalBanner with live countdown (static 14:59 without JS), chips, device and Sponsored Moment cards; 404 page. Test countdown, JS-off rendering. Commit.
+- [x] 7. **`account.html` + `404.html`.** RenewalBanner with live countdown (static 14:59 without JS), chips, device and Sponsored Moment cards; 404 page. Test countdown, JS-off rendering. Commit.
 - [ ] 8. **Vyrus polish and session hand-off.** Titles, meta descriptions, favicon, OG tags, `noindex` meta on all pages; check contrast of any pairing not in the brand doc; grep the site for `TODO`, `lorem`, `diesel`, `fume`, `spike`, emoji (must be none in visible copy); console clean; all internal links resolve. Update Open items and the Challenges log. Commit and push. **End of Session 1.**
 
 ## Session 2 — Mosaic site, deploy, hand-back
@@ -48,10 +48,13 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — Added a skip link and `aria-hidden` cursors, so screen readers say "vyrus", not "vyrus underscore".
 - 2026-09-24 HKT — Stage heading "built to know you." added (the spec gave the section no heading). Within `.theme-deep`, `--surface-inverse` resolves to a light panel, so the spec readout is a pale terminal card on the dark stage; kept as the design system defines it. The words "diesel" and "canister" appear only in image alt text, following the brand doc's own alt-text example.
 - 2026-09-24 HKT — Tier cards run three across only from 960 px. Below that they stack in one column (max 520 px) with Pro first, because the no-wrap fume label overflows three narrow columns at 768 px. The primary button on the aqua Pro card hovers to `--surface-raised`, the same fix as in the aqua bands.
-- 2026-09-24 HKT — The retention band's "See your account" link points to `account.html`, which step 7 adds.
+- 2026-09-24 HKT — account.html: the renewal banner and greeting share one aqua band, which satisfies the aqua-field rule; the banner drops its shadow there (flat on aqua). The nav button there is a secondary "See plans", so "Renew now" stays the only primary in view. The banner title stays an `h3`, as the component requires, even though it comes before the page `h1`.
+- 2026-09-24 HKT — 404.html uses root-absolute asset paths (`/assets/...`), because Pages serves it at any missing URL depth. Its header shows only the wordmark, so "Back to Vyrus" is the page's single primary button.
+- 2026-09-24 HKT — "Your account" was added to the footer links on every page.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
 - Button labels were underlined because the design-system button styles did not reset anchor underlines; fixed with one rule in site.css.
 - A typing-on headline normally makes the page jump as lines wrap; solved by typing into an overlay on top of the real text, which stays in place but transparent.
+- The countdown seemed broken in testing, but the browser was running a stale cached `site.js` (python's http.server sends no cache headers); local previews now use a small no-store server script.
 - The design system's ghost-link colour failed contrast on the aqua hero (3.9:1); measured every pairing and switched text on aqua to the dark on-aqua ink (9.9:1).

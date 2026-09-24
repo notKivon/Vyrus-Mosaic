@@ -20,6 +20,19 @@
     });
   }
 
+  // Lapsed-state countdown: ticks down from 14:59 once a second. Static under reduced motion or without JS.
+  var clock = document.querySelector('[data-countdown]');
+  if (clock && !reduceMotion) {
+    var remaining = 14 * 60 + 59;
+    var tick = setInterval(function () {
+      remaining -= 1;
+      var minutes = Math.floor(remaining / 60);
+      var seconds = remaining % 60;
+      clock.textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+      if (remaining <= 0) clearInterval(tick);
+    }, 1000);
+  }
+
   // Hero headline types on once at 30 ms per character, over the real (transparent) text.
   var typed = document.querySelector('.js-type');
   if (typed && !reduceMotion) {
