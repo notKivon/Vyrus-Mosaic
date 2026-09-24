@@ -69,6 +69,6 @@
 .t-vy-board{font-family:var(--font-vy);font-size:30px;line-height:38px;font-weight:500;letter-spacing:-0.04em;}
 /* Component type: button labels and the Mosaic lockup (a logo size) */
 .btn{font-family:var(--font-sans);font-size:17px;line-height:24px;font-weight:600;}
-.lockup{font-family:var(--font-mo);font-size:24px;line-height:28px;font-weight:600;letter-spacing:-0.01em;}
+.lockup{font-family:var(--font-mo);font-size:40px;line-height:1;font-weight:600;letter-spacing:-0.01em;}
 /* Phone: shrink display sizes below 640px */
 @media (max-width:640px){.t-display{font-size:40px;line-height:44px}.t-h2{font-size:30px;line-height:36px}.t-lede{font-size:18px;line-height:28px}.t-vy-display{font-size:30px;line-height:38px}.t-mo-display{font-size:34px;line-height:40px}}
