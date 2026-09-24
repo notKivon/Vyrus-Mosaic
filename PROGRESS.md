@@ -82,6 +82,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — The hub states the product plainly (camera, microphone, diesel fumes) but, per the spec, names the lapsed-payment penalty only as Retention Assurance™ and the 14:59 countdown. It has no JavaScript. Company cards sit side by side from 720 px; the features table scrolls inside its own region below 720 px.
 
 ## Challenges log
+- The hub's Mosaic lockup was first set in Figtree, but the real lockup is Newsreader 600 at 24 px with a 28 px mark; Kevin spotted it, and the hub now copies the Mosaic site's lockup values exactly.
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
 - Button labels were underlined because the design-system button styles did not reset anchor underlines; fixed with one rule in site.css.
 - A typing-on headline normally makes the page jump as lines wrap; solved by typing into an overlay on top of the real text, which stays in place but transparent.
