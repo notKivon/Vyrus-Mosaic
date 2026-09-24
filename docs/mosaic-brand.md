@@ -51,7 +51,7 @@ Never use: surveillance, spy, track (as a verb about people), spikes, mask (exce
 
 ## Logo
 - **Mark:** `mosaic/assets/img/mosaic-mark-on-navy.svg` (3 × 3 tiles: blue and light-blue pieces, one teal, one merged double teal tile, one brass, bone eye tile with a navy pupil in the centre). Inline it in the nav so it renders crisply; also use it as the favicon. Do not rearrange tiles or recolour the eye.
-- **Lockup:** mark (28 px on desktop nav) + "Mosaic" in Newsreader 600 at 40 px (so its cap height matches the 28 px mark, token `--wordmark-size`), title case, letter-spacing −0.01em, `--ink`, with one tile width (about 8 px at this size) of gap. Build it in HTML. Never uppercase.
+- **Lockup:** mark 28 px + "Mosaic" in Newsreader 600 at 38 px (token `--wordmark-size`), title case, letter-spacing −0.01em, `--ink`, cap height equal to the mark, baseline on the mark's bottom edge, gap about 10 px. Build it in HTML. Never uppercase.
 - Clear space one tile on every side; mark minimum 20 px, lockup minimum 96 px wide.
 - "Endpoint: Vyrus" may appear small in `--ink-muted` `.t-data`, as plain text (never the Vyrus wordmark style).
 
