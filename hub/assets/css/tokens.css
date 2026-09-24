@@ -1,0 +1,73 @@
+/* Project hub tokens (written by hand, 24 Sep 2026). Single source for every colour, font and size: never hard-code these values elsewhere. */
+:root{
+  --paper:#f4f1ea;
+  --card:#fbfaf6;
+  --sunken:#ebe6da;
+  --ink:#17191e;
+  --ink-muted:#545963;
+  --ink-inverse:#fbfaf6;
+  --line:#d8d2c4;
+  --line-strong:#8a8578;
+  --flag:#a8321f;
+  --focus:#17191e;
+  /* Specimen colours, copied from each brand's tokens.css; used only inside specimen panels */
+  --vy-aqua:#3fe0d0;
+  --vy-aqua-soft:#9ceee4;
+  --vy-ink:#032427;
+  --vy-ink-muted:#2c5659;
+  --vy-raised:#f5fffd;
+  --mo-ground:#0b1a33;
+  --mo-raised:#11244a;
+  --mo-stone:#1c3257;
+  --mo-ink:#f0ebe0;
+  --mo-ink-muted:#a8b3c7;
+  --mo-blue:#3b67b0;
+  --mo-teal:#2fb3a6;
+  --mo-brass:#c9973f;
+  --mo-brass-strong:#e0b565;
+  --mo-paper:#efe9dd;
+  --mo-paper-ink:#0b1a33;
+  --mo-paper-brass:#7a5514;
+  --font-sans:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-vy:"Martian Mono", ui-monospace, Menlo, monospace;
+  --font-mo:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-24:96px;
+  --radius-sm:4px;
+  --radius-md:12px;
+  --rule:1px;
+  --measure:62ch;
+  --container:1200px;
+  --shadow-card:0 1px 0 rgba(23,25,30,0.06), 0 12px 32px rgba(23,25,30,0.07);
+}
+/* Type scale: one class per named style (.t-<name>) */
+.t-display{font-family:var(--font-sans);font-size:60px;line-height:64px;font-weight:700;letter-spacing:-0.035em;}
+.t-h2{font-family:var(--font-sans);font-size:38px;line-height:44px;font-weight:700;letter-spacing:-0.025em;}
+.t-h3{font-family:var(--font-sans);font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;}
+.t-lede{font-family:var(--font-sans);font-size:20px;line-height:30px;font-weight:400;}
+.t-body{font-family:var(--font-sans);font-size:17px;line-height:26px;font-weight:400;}
+.t-body-s{font-family:var(--font-sans);font-size:14px;line-height:20px;font-weight:400;}
+.t-label{font-family:var(--font-mono);font-size:12px;line-height:16px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;}
+.t-num{font-family:var(--font-mono);font-size:14px;line-height:20px;font-weight:500;font-variant-numeric:tabular-nums;}
+/* Specimen styles: each brand's own display type, for its panel only */
+.t-vy-display{font-family:var(--font-vy);font-size:40px;line-height:48px;font-weight:500;letter-spacing:-0.04em;}
+.t-vy-heading{font-family:var(--font-vy);font-size:20px;line-height:28px;font-weight:500;letter-spacing:-0.02em;}
+.t-mo-display{font-family:var(--font-mo);font-size:44px;line-height:48px;font-weight:500;letter-spacing:-0.015em;}
+.t-mo-heading{font-family:var(--font-mo);font-size:24px;line-height:30px;font-weight:500;}
+.t-mo-display em,.t-mo-heading em{font-style:italic;font-weight:400;color:var(--mo-brass-strong)}
+/* Mock-up type: the small URL and the billboard line inside the campaign mock-ups */
+.t-url{font-family:var(--font-mono);font-size:12px;line-height:16px;font-weight:500;}
+.t-vy-board{font-family:var(--font-vy);font-size:30px;line-height:38px;font-weight:500;letter-spacing:-0.04em;}
+/* Component type: button labels and the Mosaic lockup (a logo size) */
+.btn{font-family:var(--font-sans);font-size:17px;line-height:24px;font-weight:600;}
+.lockup{font-family:var(--font-sans);font-size:28px;line-height:36px;font-weight:600;letter-spacing:-0.01em;}
+/* Phone: shrink display sizes below 640px */
+@media (max-width:640px){.t-display{font-size:40px;line-height:44px}.t-h2{font-size:30px;line-height:36px}.t-lede{font-size:18px;line-height:28px}.t-vy-display{font-size:30px;line-height:38px}.t-mo-display{font-size:34px;line-height:40px}}

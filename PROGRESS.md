@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 11b — Build the project hub
-**Next step:** 12 — ⏸️ Kevin: create the three Cloudflare Pages projects
-**Last verified healthy:** 2026-09-24 HKT, step 11 (full Mosaic index + 404 at 360/768/1280, table scrolls in its wrapper on phones, keyboard, word grep, all assets 200, console clean)
+**Current step:** 12 — ⏸️ Kevin: create the three Cloudflare Pages projects (waiting on Kevin)
+**Next step:** 13 — Cross-links and absolute URLs
+**Last verified healthy:** 2026-09-24 HKT, step 11b (hub index + 404 at 360/768/1280, no horizontal scroll, all assets 200, skip link first in tab order, word/emoji/hex grep clean, console clean)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -34,7 +34,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - [x] 10. **How it works + products.** Tile-convergence grid, Audience and Civic panels. Test responsive. Commit.
 - [x] 11. **Compliance, quote, CTA, 404, polish.** Compliance table (scrolls on phone), quote band, briefing CTA, `404.html`; titles, meta, favicon, `noindex`; grep for `TODO`, `lorem`, `surveillance`, `spike`, emoji; console clean. Commit and push.
 - [x] 11a. **Spec change (Kevin's request):** a third site, the project hub at `aiml.11123334.xyz`, introducing both companies and the project. CLAUDE.md + `docs/hub-brief.md`. Commit.
-- [ ] 11b. **Build the hub.** `hub/` with `_headers`, tokens, components, site CSS, `index.html` and `404.html` per `docs/hub-brief.md`. Test at 360/768/1280, keyboard, JS off (it has none), contrast of the new pairings, word grep (no "spike"), console clean. Commit and push.
+- [x] 11b. **Build the hub.** `hub/` with `_headers`, tokens, components, site CSS, `index.html` and `404.html` per `docs/hub-brief.md`. Test at 360/768/1280, keyboard, JS off (it has none), contrast of the new pairings, word grep (no "spike"), console clean. Commit and push.
 - [ ] 12. ⏸️ **Kevin: create the three Cloudflare Pages projects.** In the Cloudflare dashboard: Workers & Pages → Create → Pages → Connect to Git → pick the repo. Use the settings table in CLAUDE.md (Deploy) for the Vyrus project, save and deploy; then repeat for the Mosaic and Hub projects with their columns. After both builds finish, open each project → Custom domains → Set up a custom domain → enter `vyrus.aiml.11123334.xyz` (Vyrus project), `mosaic.aiml.11123334.xyz` (Mosaic project) or `aiml.11123334.xyz` (Hub project) → Activate domain, accepting the CNAME it proposes (if the DNS for `11123334.xyz` is not on this Cloudflare account, add `CNAME vyrus.aiml → <vyrus project>.pages.dev` and `CNAME mosaic.aiml → <mosaic project>.pages.dev` at the DNS host, and `CNAME aiml → <hub project>.pages.dev`, then Verify). Wait until all three domains show Active and load over https. Report back the three `*.pages.dev` URLs and confirm all three custom domains are Active.
 - [ ] 13. **Cross-links and absolute URLs.** Replace every `#partner-url-pending` with the partner's custom-domain URL (Vyrus footer + 404 → `https://mosaic.aiml.11123334.xyz/`; Mosaic footer + 404 → `https://vyrus.aiml.11123334.xyz/`); make the Vyrus `og:image` absolute (`https://vyrus.aiml.11123334.xyz/assets/img/mask-hero.jpg`); record both URLs under Project values. Grep confirms no `partner-url-pending` remains. Commit and push (both projects redeploy).
 - [ ] 14. **Live verification and hand-back.** Fetch all three live URLs: pages load, fonts load, images load, 404 pages work, `X-Robots-Tag: noindex` header present (`curl -sI <url> | grep -i robots`), cross-links go the right way. Then give Kevin: the three URLs, a short list of tools used, and the Challenges log, ready for his "Build your campaign" and "Evaluate" slides.
@@ -78,6 +78,8 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — The lockup's 24 px text size is the one font size set in site.css; it is a logo dimension from the brand doc (like the Vyrus wordmark), not a type style. A phone-only lede size override was removed to keep to the token sizes.
 
 - 2026-09-24 HKT — Kevin asked for a landing page at `aiml.11123334.xyz`. It becomes a third Pages project (`hub/`), the one place that steps out of character. The brand sites do not link to it, so they stay straight-faced; it links to both by their final custom domains from the start (no pending anchor), since those URLs are already fixed.
+- 2026-09-24 HKT — Hub look: warm paper and near-black ink in Figtree with IBM Plex Mono labels, so it belongs to neither brand. Each brand appears only inside its own specimen panel (aqua + Martian Mono, navy + Newsreader), using colours copied into the hub's tokens as `--vy-*` and `--mo-*`. The Mosaic card uses SVG tile art, as Mosaic never shows the mask. Pairings measured: muted ink on paper 6.2:1, the red "what it really does" column 5.9:1, specimen pairings 8.2:1 or better.
+- 2026-09-24 HKT — The hub states the product plainly (camera, microphone, diesel fumes) but, per the spec, names the lapsed-payment penalty only as Retention Assurance™ and the 14:59 countdown. It has no JavaScript. Company cards sit side by side from 720 px; the features table scrolls inside its own region below 720 px.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
