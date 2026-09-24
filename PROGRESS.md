@@ -1,7 +1,7 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 12 — ⏸️ Kevin: create the two Cloudflare Pages projects (waiting on Kevin)
-**Next step:** 13 — Cross-links and absolute URLs
+**Current step:** 11b — Build the project hub
+**Next step:** 12 — ⏸️ Kevin: create the three Cloudflare Pages projects
 **Last verified healthy:** 2026-09-24 HKT, step 11 (full Mosaic index + 404 at 360/768/1280, table scrolls in its wrapper on phones, keyboard, word grep, all assets 200, console clean)
 
 ## Project values
@@ -10,6 +10,8 @@
 - Mosaic Pages URL: *(pending, step 12)*
 - Vyrus custom domain: https://vyrus.aiml.11123334.xyz/ *(activated in step 12)*
 - Mosaic custom domain: https://mosaic.aiml.11123334.xyz/ *(activated in step 12)*
+- Hub Pages URL: *(pending, step 12)*
+- Hub custom domain: https://aiml.11123334.xyz/ *(activated in step 12)*
 
 ## Session 1 — Vyrus site
 Read: CLAUDE.md, PROGRESS.md, docs/vyrus-brand.md. Do not open docs/mosaic-brand.md.
@@ -31,9 +33,11 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - [x] 9. **Mosaic shell + hero + proof row.** Folder files as in CLAUDE.md, `_headers`, `site.css` base, inline mark + lockup nav, hero with the assembling tile art, proof row DataTiles, footer with fictional line and `#partner-url-pending` link, briefing dialog in `site.js`. Test at 360/768/1280 px, keyboard, reduced motion. Commit.
 - [x] 10. **How it works + products.** Tile-convergence grid, Audience and Civic panels. Test responsive. Commit.
 - [x] 11. **Compliance, quote, CTA, 404, polish.** Compliance table (scrolls on phone), quote band, briefing CTA, `404.html`; titles, meta, favicon, `noindex`; grep for `TODO`, `lorem`, `surveillance`, `spike`, emoji; console clean. Commit and push.
-- [ ] 12. ⏸️ **Kevin: create the two Cloudflare Pages projects.** In the Cloudflare dashboard: Workers & Pages → Create → Pages → Connect to Git → pick the repo. Use the settings table in CLAUDE.md (Deploy) for the Vyrus project, save and deploy; then repeat for the Mosaic project with its column. After both builds finish, open each project → Custom domains → Set up a custom domain → enter `vyrus.aiml.11123334.xyz` (Vyrus project) or `mosaic.aiml.11123334.xyz` (Mosaic project) → Activate domain, accepting the CNAME it proposes (if the DNS for `11123334.xyz` is not on this Cloudflare account, add `CNAME vyrus.aiml → <vyrus project>.pages.dev` and `CNAME mosaic.aiml → <mosaic project>.pages.dev` at the DNS host, then Verify). Wait until both domains show Active and load over https. Report back the two `*.pages.dev` URLs and confirm both custom domains are Active.
+- [x] 11a. **Spec change (Kevin's request):** a third site, the project hub at `aiml.11123334.xyz`, introducing both companies and the project. CLAUDE.md + `docs/hub-brief.md`. Commit.
+- [ ] 11b. **Build the hub.** `hub/` with `_headers`, tokens, components, site CSS, `index.html` and `404.html` per `docs/hub-brief.md`. Test at 360/768/1280, keyboard, JS off (it has none), contrast of the new pairings, word grep (no "spike"), console clean. Commit and push.
+- [ ] 12. ⏸️ **Kevin: create the three Cloudflare Pages projects.** In the Cloudflare dashboard: Workers & Pages → Create → Pages → Connect to Git → pick the repo. Use the settings table in CLAUDE.md (Deploy) for the Vyrus project, save and deploy; then repeat for the Mosaic and Hub projects with their columns. After both builds finish, open each project → Custom domains → Set up a custom domain → enter `vyrus.aiml.11123334.xyz` (Vyrus project), `mosaic.aiml.11123334.xyz` (Mosaic project) or `aiml.11123334.xyz` (Hub project) → Activate domain, accepting the CNAME it proposes (if the DNS for `11123334.xyz` is not on this Cloudflare account, add `CNAME vyrus.aiml → <vyrus project>.pages.dev` and `CNAME mosaic.aiml → <mosaic project>.pages.dev` at the DNS host, and `CNAME aiml → <hub project>.pages.dev`, then Verify). Wait until all three domains show Active and load over https. Report back the three `*.pages.dev` URLs and confirm all three custom domains are Active.
 - [ ] 13. **Cross-links and absolute URLs.** Replace every `#partner-url-pending` with the partner's custom-domain URL (Vyrus footer + 404 → `https://mosaic.aiml.11123334.xyz/`; Mosaic footer + 404 → `https://vyrus.aiml.11123334.xyz/`); make the Vyrus `og:image` absolute (`https://vyrus.aiml.11123334.xyz/assets/img/mask-hero.jpg`); record both URLs under Project values. Grep confirms no `partner-url-pending` remains. Commit and push (both projects redeploy).
-- [ ] 14. **Live verification and hand-back.** Fetch both live URLs: pages load, fonts load, images load, 404 pages work, `X-Robots-Tag: noindex` header present (`curl -sI <url> | grep -i robots`), cross-links go the right way. Then give Kevin: both URLs, a short list of tools used, and the Challenges log, ready for his "Build your campaign" and "Evaluate" slides.
+- [ ] 14. **Live verification and hand-back.** Fetch all three live URLs: pages load, fonts load, images load, 404 pages work, `X-Robots-Tag: noindex` header present (`curl -sI <url> | grep -i robots`), cross-links go the right way. Then give Kevin: the three URLs, a short list of tools used, and the Challenges log, ready for his "Build your campaign" and "Evaluate" slides.
 
 ## Open items
 - Cross-links use `#partner-url-pending` until step 13 (Vyrus: footer of index, account and 404; Mosaic: footer of index and 404).
@@ -72,6 +76,8 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — Quote attribution and text use `--on-navy` (9.0:1); `--ink-muted` on navy is only 5.1:1, so it was not used there. Headlines each carry one brass italic phrase: "one tile at a time.", "built in.", "together.", "missing.".
 - 2026-09-24 HKT — CTA lede: "Our partnerships team briefs advertisers and public agencies on what the network already knows about their communities." Mosaic 404 uses root-absolute asset paths like the Vyrus one, shows a 5 × 3 tile grid with one dashed empty slot, and has a lockup-only nav so "Return to the picture" is its one primary button.
 - 2026-09-24 HKT — The lockup's 24 px text size is the one font size set in site.css; it is a logo dimension from the brand doc (like the Vyrus wordmark), not a type style. A phone-only lede size override was removed to keep to the token sizes.
+
+- 2026-09-24 HKT — Kevin asked for a landing page at `aiml.11123334.xyz`. It becomes a third Pages project (`hub/`), the one place that steps out of character. The brand sites do not link to it, so they stay straight-faced; it links to both by their final custom domains from the start (no pending anchor), since those URLs are already fixed.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*

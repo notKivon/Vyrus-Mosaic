@@ -10,6 +10,7 @@ This file loads every session. To save tokens, read only what the current sessio
 | `PROGRESS.md` | Step checklist, current step, decisions log | Every session |
 | `docs/vyrus-brand.md` | Vyrus voice, visuals, components, page spec | Session 1 only |
 | `docs/mosaic-brand.md` | Mosaic voice, visuals, components, page spec | Session 2 only |
+| `docs/hub-brief.md` | Project hub: purpose, look, page spec | Hub steps only |
 
 Do not read the other brand's doc "for context". The cross-brand facts you need are in this file.
 
@@ -25,9 +26,9 @@ Assessed on craft: readable type, clean edges, full resolution, **no placeholder
 
 ## Tech stack
 - Plain HTML5, CSS and vanilla JavaScript. **No framework, no build step, no npm, no TypeScript, no Tailwind.**
-- Fonts from Google Fonts via `<link>` with `display=swap`: Martian Mono and Figtree (Vyrus); Newsreader, Figtree and JetBrains Mono (Mosaic).
-- Local preview: `python3 -m http.server 8000` run inside `vyrus/` or `mosaic/`.
-- Hosting: Cloudflare Pages, two projects connected to this one GitHub repo (see Deploy).
+- Fonts from Google Fonts via `<link>` with `display=swap`: Martian Mono and Figtree (Vyrus); Newsreader, Figtree and JetBrains Mono (Mosaic); Figtree and IBM Plex Mono (hub), plus Martian Mono and Newsreader for its two brand specimens.
+- Local preview: `python3 -m http.server 8000` run inside `vyrus/`, `mosaic/` or `hub/`.
+- Hosting: Cloudflare Pages, three projects connected to this one GitHub repo (see Deploy).
 
 ## Repo layout
 ```
@@ -43,10 +44,14 @@ Assessed on craft: readable type, clean edges, full resolution, **no placeholder
   assets/css/tokens.css  components.css  site.css
   assets/js/site.js
   assets/img/
+/hub/             deployed as the project hub at aiml.11123334.xyz (Pages root directory)
+  index.html  404.html  _headers
+  assets/css/tokens.css  components.css  site.css
+  assets/img/
 ```
 Each site folder is fully self-contained: a page may only reference files inside its own folder, because Cloudflare serves only the root directory. Never link `../`.
 
-`tokens.css` and `components.css` in each site were generated from the design systems and are the single source for colours, type sizes, spacing and component styling. Page-specific layout goes in `site.css`. Never hard-code a hex value, font size or spacing value outside `tokens.css`; use the CSS variables and `.t-*` type classes.
+`tokens.css` and `components.css` in the two brand sites were generated (the hub's were written by hand, following the same rules) from the design systems and are the single source for colours, type sizes, spacing and component styling. Page-specific layout goes in `site.css`. Never hard-code a hex value, font size or spacing value outside `tokens.css`; use the CSS variables and `.t-*` type classes.
 
 ## Code rules
 - Semantic HTML (`header`, `nav`, `main`, `section`, `footer`, one `h1` per page). Pages must read correctly with JavaScript disabled; JS only adds motion and the countdown.
@@ -82,7 +87,10 @@ Each brand has its own words for these facts (Vyrus euphemisms, Mosaic vocabular
 - Vyrus never shows the Mosaic logo. Its footer carries one fine-print line: "Vyrus is a member of the Mosaic Partner Network." The words "Mosaic Partner Network" link to the Mosaic site.
 - Mosaic never shows the mask and never borrows Vyrus's aqua fields, monospace headlines or underscore cursor. It may show "Endpoint: Vyrus" small in `ink-muted`, linking to the Vyrus site.
 - Shared DNA only: Figtree, teal/aqua as the colour of Vyrus data, the 4 px spacing scale.
-- Each site has exactly one cross-link, in its footer (plus the same link in its 404 page). Until the real URLs exist it points to `#partner-url-pending`; step 13 in PROGRESS.md replaces it. Grep for `partner-url-pending` to find every instance. This anchor is the one permitted placeholder, and it must be gone before the final hand-back.
+- Each brand site has exactly one cross-link, in its footer (plus the same link in its 404 page). Until the real URLs exist it points to `#partner-url-pending`; step 13 in PROGRESS.md replaces it. Grep for `partner-url-pending` to find every instance. This anchor is the one permitted placeholder, and it must be gone before the final hand-back.
+
+## Project hub (aiml.11123334.xyz)
+The hub is the one place that steps out of character: a neutral, honest overview of the class project that introduces both companies, explains the joke and the ethics behind it, shows the three campaign assets and says how the sites were made. Its spec is in `docs/hub-brief.md`. The brand sites never link to the hub (they stay straight-faced); the hub links to both brand sites by their custom domains. The hub may state the product facts plainly, except that it never names or describes the spikes (it says "Retention Assurance™" and the 14:59 countdown only). All code, satire and safety rules below apply to it too.
 
 ## Satire and safety rules (non-negotiable)
 - Both footers end with this line in the smallest body style: "Vyrus and Mosaic are fictional. Made for a school AIML project; nothing here is for sale."
@@ -95,19 +103,19 @@ Each brand has its own words for these facts (Vyrus euphemisms, Mosaic vocabular
 There are no secrets in this project: no API keys, no environment variables, no backend. Safe to commit: everything in the repo. Never commit personal information (Kevin's full name, email, school name) or anything from outside the repo other than the approved render images. `.gitignore` excludes `.DS_Store`, `*.blend`, `*.png` source renders and editor folders.
 
 ## Deploy (Cloudflare Pages; the dashboard steps are done by Kevin)
-Two Pages projects on the same repo, production branch `main`:
+Three Pages projects on the same repo, production branch `main`:
 
-| Setting | Vyrus project | Mosaic project |
-|---|---|---|
-| Project name | `vyrus` (or first free variant) | `mosaic-civic` (or first free variant) |
-| Framework preset | None | None |
-| Build command | *(empty)* | *(empty)* |
-| Build output directory | `/` | `/` |
-| Root directory | `vyrus` | `mosaic` |
-| Build watch paths, include | `vyrus/*` | `mosaic/*` |
-| Custom domain | `vyrus.aiml.11123334.xyz` | `mosaic.aiml.11123334.xyz` |
+| Setting | Vyrus project | Mosaic project | Hub project |
+|---|---|---|---|
+| Project name | `vyrus` (or first free variant) | `mosaic-civic` (or first free variant) | `aiml-hub` (or first free variant) |
+| Framework preset | None | None | None |
+| Build command | *(empty)* | *(empty)* | *(empty)* |
+| Build output directory | `/` | `/` | `/` |
+| Root directory | `vyrus` | `mosaic` | `hub` |
+| Build watch paths, include | `vyrus/*` | `mosaic/*` | `hub/*` |
+| Custom domain | `vyrus.aiml.11123334.xyz` | `mosaic.aiml.11123334.xyz` | `aiml.11123334.xyz` |
 
-Each project gets its custom domain under Custom domains in the Pages dashboard (Cloudflare creates the CNAME to the project's `*.pages.dev` host and issues the certificate). Cross-links and absolute URLs always use the custom domains (`https://vyrus.aiml.11123334.xyz/`, `https://mosaic.aiml.11123334.xyz/`), never `pages.dev`. The `*.pages.dev` URLs keep working and are recorded in PROGRESS.md under "Project values" once known.
+Each project gets its custom domain under Custom domains in the Pages dashboard (Cloudflare creates the CNAME to the project's `*.pages.dev` host and issues the certificate). Cross-links and absolute URLs always use the custom domains (`https://vyrus.aiml.11123334.xyz/`, `https://mosaic.aiml.11123334.xyz/`, `https://aiml.11123334.xyz/`), never `pages.dev`. The `*.pages.dev` URLs keep working and are recorded in PROGRESS.md under "Project values" once known.
 
 ## Working agreement (multi-session build)
 - Build in the order in PROGRESS.md, one step at a time. The build is split into two sessions; do not start a Session 2 step in Session 1.
