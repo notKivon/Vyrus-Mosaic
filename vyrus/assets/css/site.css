@@ -89,6 +89,21 @@ a.vy-btn:not(.vy-btn-ghost){text-decoration:none}
 @media (max-width:899px){.stage-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:480px){.stage-thumbs{gap:var(--space-3)}}
 
+/* Pricing: three across on desktop, one column below 960px with Pro first */
+.tier-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);align-items:stretch}
+.vy-tier.is-featured .vy-btn-primary:hover:not([disabled]){background:var(--surface-raised);color:var(--ink)}
+.vy-tier.is-featured .vy-btn-primary:hover:not([disabled])::after{color:var(--aqua-deep)}
+.tier-max .t-body-s{color:var(--ink-muted)}
+.pricing-notes{display:grid;gap:var(--space-2)}
+.pricing-notes .t-body-s{color:var(--ink-muted)}
+@media (max-width:959px){
+  .tier-row{grid-template-columns:minmax(0,1fr);max-width:520px}
+  .tier-pro{order:-1}
+}
+
+/* Retention band */
+.retention{display:grid;gap:var(--space-4);justify-items:start}
+
 /* Footer */
 .site-footer{background:var(--surface-inverse);color:var(--ink-inverse);padding:var(--space-12) 0}
 .site-footer .vy-wordmark{color:var(--ink-inverse)}

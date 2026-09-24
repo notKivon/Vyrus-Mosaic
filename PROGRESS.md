@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 6 — Pricing + retention band
-**Next step:** 7 — `account.html` + `404.html`
-**Last verified healthy:** 2026-09-24 HKT, step 5 (features + stage at 360/768/1280, console clean)
+**Current step:** 7 — `account.html` + `404.html`
+**Next step:** 8 — Vyrus polish and session hand-off
+**Last verified healthy:** 2026-09-24 HKT, step 6 (pricing + retention at 360/768/1280, prices checked, console clean)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -17,7 +17,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/vyrus-brand.md. Do not open docs/mosaic-brand
 - [x] 3. **Renders.** With Kevin's approval to read `~/Pictures/Vyrus Mockup/`, copy the four v2 JPEGs into `vyrus/assets/img/` under the names in the brand doc and make 640 px versions with `sips`. Check each file is under 300 KB (re-export at lower quality with `sips -s formatOptions 70` if not). If the folder is missing, stop and ask Kevin to drop the files into `vyrus/assets/img/`. Commit.
 - [x] 4. **Vyrus shell + hero.** `site.css` base (box-sizing, body on `--ground`, container, section spacing, nav, footer), `site.js` (cursor typing enhancement, purchase dialog), nav, hero, footer with fictional line and `#partner-url-pending` link, the purchase dialog. Test at 360/768/1280 px, keyboard-only through nav and dialog, reduced motion. Commit.
 - [x] 5. **Features + stage sections.** Features grid and the `.theme-deep` stage with spec readout and the three renders. Test responsive, image sizes, alt text. Commit.
-- [ ] 6. **Pricing + retention band.** Three TierCards exactly as specified, EasyBreath line under Max, footnotes, retention band. Check every price against CLAUDE.md. Test phone order (Pro first). Commit.
+- [x] 6. **Pricing + retention band.** Three TierCards exactly as specified, EasyBreath line under Max, footnotes, retention band. Check every price against CLAUDE.md. Test phone order (Pro first). Commit.
 - [ ] 7. **`account.html` + `404.html`.** RenewalBanner with live countdown (static 14:59 without JS), chips, device and Sponsored Moment cards; 404 page. Test countdown, JS-off rendering. Commit.
 - [ ] 8. **Vyrus polish and session hand-off.** Titles, meta descriptions, favicon, OG tags, `noindex` meta on all pages; check contrast of any pairing not in the brand doc; grep the site for `TODO`, `lorem`, `diesel`, `fume`, `spike`, emoji (must be none in visible copy); console clean; all internal links resolve. Update Open items and the Challenges log. Commit and push. **End of Session 1.**
 
@@ -47,6 +47,8 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — Hero typing is drawn as an overlay on top of the real, transparent headline, so layout never shifts and screen readers always get the full text. It is skipped under reduced motion.
 - 2026-09-24 HKT — Added a skip link and `aria-hidden` cursors, so screen readers say "vyrus", not "vyrus underscore".
 - 2026-09-24 HKT — Stage heading "built to know you." added (the spec gave the section no heading). Within `.theme-deep`, `--surface-inverse` resolves to a light panel, so the spec readout is a pale terminal card on the dark stage; kept as the design system defines it. The words "diesel" and "canister" appear only in image alt text, following the brand doc's own alt-text example.
+- 2026-09-24 HKT — Tier cards run three across only from 960 px. Below that they stack in one column (max 520 px) with Pro first, because the no-wrap fume label overflows three narrow columns at 768 px. The primary button on the aqua Pro card hovers to `--surface-raised`, the same fix as in the aqua bands.
+- 2026-09-24 HKT — The retention band's "See your account" link points to `account.html`, which step 7 adds.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
