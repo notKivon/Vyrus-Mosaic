@@ -51,7 +51,6 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 @media (max-width:640px){
   .hero{padding:var(--space-12) 0}
   .hero-copy{gap:var(--space-4)}
-  .hero-copy .t-lede{font-size:20px;line-height:28px}
 }
 
 /* Tile fills: SVG shapes (hero, 404) and plain HTML cells (how it works) */
@@ -109,3 +108,29 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
   .products{grid-template-columns:minmax(0,1fr)}
   .product{padding:var(--space-6)}
 }
+
+/* Compliance log: sunken, square, scrolls inside its own wrapper on phones */
+.compliance{display:grid;gap:var(--space-6)}
+.compliance h2{max-width:18ch}
+.table-scroll{overflow-x:auto;background:var(--surface-sunken);border-radius:var(--radius-0);box-shadow:inset 0 0 0 1px var(--line)}
+.table-scroll:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.log{width:100%;min-width:720px;border-collapse:collapse;text-align:left}
+.log caption{text-align:left;padding:var(--space-4) var(--space-4) var(--space-2)}
+.log th{font-weight:inherit;color:var(--ink-muted)}
+.log th,.log td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--line);white-space:nowrap}
+.log tbody tr:last-child td{border-bottom:0}
+.log .is-pending{color:var(--flag-strong)}
+
+/* Quote band */
+.quote-band{background:var(--navy);color:var(--on-navy);padding:var(--space-16) 0}
+.quote{margin:0 auto;display:grid;gap:var(--space-4)}
+.quote blockquote{margin:0;max-width:32ch}
+@media (max-width:640px){.quote-band{padding:var(--space-12) 0}}
+
+/* Briefing CTA */
+.cta-inner{display:grid;gap:var(--space-6);justify-items:start}
+
+/* 404 */
+.not-found-inner{display:grid;gap:var(--space-6);justify-items:start}
+.not-found-art{width:152px;height:auto}
+.tile-missing{fill:none;stroke:var(--line-strong);stroke-width:1;stroke-dasharray:4 3}

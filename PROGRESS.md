@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 11 — Compliance, quote, CTA, 404, polish
-**Next step:** 12 — ⏸️ Kevin: create the two Cloudflare Pages projects
-**Last verified healthy:** 2026-09-24 HKT, step 10 (how it works + products at 360/768/1280, tags fit their tiles, console clean)
+**Current step:** 12 — ⏸️ Kevin: create the two Cloudflare Pages projects (waiting on Kevin)
+**Next step:** 13 — Cross-links and absolute URLs
+**Last verified healthy:** 2026-09-24 HKT, step 11 (full Mosaic index + 404 at 360/768/1280, table scrolls in its wrapper on phones, keyboard, word grep, all assets 200, console clean)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -28,15 +28,14 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 
 - [x] 9. **Mosaic shell + hero + proof row.** Folder files as in CLAUDE.md, `_headers`, `site.css` base, inline mark + lockup nav, hero with the assembling tile art, proof row DataTiles, footer with fictional line and `#partner-url-pending` link, briefing dialog in `site.js`. Test at 360/768/1280 px, keyboard, reduced motion. Commit.
 - [x] 10. **How it works + products.** Tile-convergence grid, Audience and Civic panels. Test responsive. Commit.
-- [ ] 11. **Compliance, quote, CTA, 404, polish.** Compliance table (scrolls on phone), quote band, briefing CTA, `404.html`; titles, meta, favicon, `noindex`; grep for `TODO`, `lorem`, `surveillance`, `spike`, emoji; console clean. Commit and push.
+- [x] 11. **Compliance, quote, CTA, 404, polish.** Compliance table (scrolls on phone), quote band, briefing CTA, `404.html`; titles, meta, favicon, `noindex`; grep for `TODO`, `lorem`, `surveillance`, `spike`, emoji; console clean. Commit and push.
 - [ ] 12. ⏸️ **Kevin: create the two Cloudflare Pages projects.** In the Cloudflare dashboard: Workers & Pages → Create → Pages → Connect to Git → pick the repo. Use the settings table in CLAUDE.md (Deploy) for the Vyrus project, save and deploy; then repeat for the Mosaic project with its column. After both builds finish, report back the two `*.pages.dev` URLs.
 - [ ] 13. **Cross-links and absolute URLs.** Replace every `#partner-url-pending` with the real partner URL (Vyrus footer + 404 → Mosaic URL; Mosaic footer + 404 → Vyrus URL); make the Vyrus `og:image` absolute; record both URLs under Project values. Grep confirms no `partner-url-pending` remains. Commit and push (both projects redeploy).
 - [ ] 14. **Live verification and hand-back.** Fetch both live URLs: pages load, fonts load, images load, 404 pages work, `X-Robots-Tag: noindex` header present (`curl -sI <url> | grep -i robots`), cross-links go the right way. Then give Kevin: both URLs, a short list of tools used, and the Challenges log, ready for his "Build your campaign" and "Evaluate" slides.
 
 ## Open items
-- Cross-links use `#partner-url-pending` until step 13 (Vyrus: footer of index, account and 404).
+- Cross-links use `#partner-url-pending` until step 13 (Vyrus: footer of index, account and 404; Mosaic: footer of index and 404).
 - Vyrus `og:image` is relative until step 13.
-- Mosaic `#compliance` (nav) and `#briefing` (no-JS fallback for briefing buttons) point at sections built in step 11.
 - Reduced motion was checked by code (CSS media queries, and a JS guard on typing and the countdown); the preview browser cannot emulate the setting. Worth a manual check once live (macOS: Accessibility → Display → Reduce motion).
 - Local preview tip: plain `python3 -m http.server` lets the browser cache JS; hard-reload if a change seems to be missing.
 
@@ -67,6 +66,10 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — How it works: the converging grid is 4 columns in HTML (not SVG) so the tags stay real text. The four tagged tiles span two columns each, because a "PURCHASE" tag (93 px) does not fit a single 4-column tile on a phone; the brass "The picture" tile spans the centre 2 × 2. Each tagged tile carries one harmless-looking rate (412 pings / day, and so on).
 - 2026-09-24 HKT — The Audience pitch "Know what they want before the mask does." keeps the word "mask" because the brand doc lists it as an approved verbatim line; it is the only use of the word on the site.
 - 2026-09-24 HKT — Products: the panel names ("Mosaic Audience", "Mosaic Civic") are the `h2`s, styled `.t-label`; the pitch is the `.t-heading`. Panels are flex columns so "Request access" sits at the same height in both. "Request access" opens the briefing dialog.
+- 2026-09-24 HKT — Compliance log: five fictional rows dated 2026-09-24 08:14 to 08:44 HKT, four "Renewed" and the latest "Pending" (in `--flag-strong`, 8.1:1 on sunken), each event a flag tag "Compliance event". The table keeps a 720 px minimum width and scrolls inside a focusable, labelled region on phones; the caption "Compliance log, latest five events" labels it. Header cells take `.t-label` from the `thead` rather than restating its sizes in site.css.
+- 2026-09-24 HKT — Quote attribution and text use `--on-navy` (9.0:1); `--ink-muted` on navy is only 5.1:1, so it was not used there. Headlines each carry one brass italic phrase: "one tile at a time.", "built in.", "together.", "missing.".
+- 2026-09-24 HKT — CTA lede: "Our partnerships team briefs advertisers and public agencies on what the network already knows about their communities." Mosaic 404 uses root-absolute asset paths like the Vyrus one, shows a 5 × 3 tile grid with one dashed empty slot, and has a lockup-only nav so "Return to the picture" is its one primary button.
+- 2026-09-24 HKT — The lockup's 24 px text size is the one font size set in site.css; it is a logo dimension from the brand doc (like the Vyrus wordmark), not a type style. A phone-only lede size override was removed to keep to the token sizes.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
