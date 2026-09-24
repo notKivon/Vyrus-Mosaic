@@ -76,7 +76,7 @@ Plans are always shown Lite, Pro, Max, left to right. Prices are in US dollars.
 
 Lapsed payment: on every plan, if a payment fails the mask counts down 15 minutes (shown as 14:59), then inward spikes deploy through the face seal toward the wearer until the plan is renewed. The spikes are never drawn on the mask or in product imagery; they appear only as the red inward-triangle row in the lapsed-state UI.
 
-Each brand has its own words for these facts (Vyrus euphemisms, Mosaic vocabulary). Use the brand doc's term every time; never state the plain truth in site copy.
+Each brand has its own words for these facts (Vyrus euphemisms, Mosaic vocabulary). Use the brand doc's term every time; never state the plain truth in site copy. The one exception is the Vyrus Retention Assurance™ disclosure, which names the spikes in fine print under the plan comparison (defined in the Vyrus brand doc).
 
 ## Cross-brand rules
 - Vyrus never shows the Mosaic logo. Its footer carries one fine-print line: "Vyrus is a member of the Mosaic Partner Network." The words "Mosaic Partner Network" link to the Mosaic site.

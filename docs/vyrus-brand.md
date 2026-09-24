@@ -24,7 +24,7 @@ Vyrus looks like a developer-tools startup that pivoted into wellness: big flat 
 | One spike firing | A Haptic Renewal Reminder™ |
 | Not paying | A pause in your journey |
 
-Never use the words diesel, fumes, spikes, pain, face (as a target), ads or data harvesting in visible copy.
+Never use the words diesel, fumes, spikes, pain, face (as a target), ads or data harvesting in visible copy. **One exception:** the Retention Assurance™ disclosure under the plan comparison (see Pricing) names the spikes plainly, in `.t-body-s` fine print, like a legal disclosure buried under the table. It is the only place the plain word appears. Everywhere else, use the euphemisms, but make them pointed: say where Haptic Renewal Reminders™ arrive ("through the face seal") and when ("after 14:59"), never what they are.
 
 ### Approved lines (use verbatim)
 - Hero (matches the billboard): "breathe smarter_"
@@ -35,6 +35,9 @@ Never use the words diesel, fumes, spikes, pain, face (as a target), ads or data
 - Lapsed banner title: "Your journey is paused." Message: "Your last payment didn’t go through. Renew to keep Retention Assurance™ dormant." Clock label: "Reminders begin in". Button: "Renew now".
 - Footer fine print: "Vyrus is a member of the Mosaic Partner Network."
 - Spec readout: "5.0 L · 42 dB · 4K/60"
+- Retention band body: "Every plan includes Retention Assurance™. Miss a payment and your mask starts a gentle 14:59 countdown. After that, Haptic Renewal Reminders™ arrive through the face seal until your journey resumes."
+- EasyBreath panel: title "EasyBreath Pro™", chip "Max only", body "Twenty-four hours of zero Ambient Particulate Experience™, guaranteed. Add a day whenever you need one.", price "$9.99 / 24 hrs", secondary button "Add EasyBreath Pro™".
+- Retention Assurance™ disclosure (fine print, the only plain-word line): "Retention Assurance™ disclosure: if a payment fails on any plan, your mask counts down 15 minutes, then deploys inward spikes through the face seal, one Haptic Renewal Reminder™ at a time, until the plan is renewed. EasyBreath Pro™ does not pause Retention Assurance™." 
 
 ## Visual rules
 - **Colour.** Aqua is the canvas, not an accent. Every page has at least one large `--aqua` field covering a third or more of the first view. Pages sit on `--ground`; cards on `--surface-raised`. Text on aqua is `--on-aqua`; aqua as text is `--aqua-strong`. `--surface-inverse` is the dark terminal panel (primary buttons, spec readout, footer). `--amber` means diesel and appears only in fume meters or next to the canister. `--rec` is only the REC dot and the lapsed state, as small marks.
@@ -91,9 +94,11 @@ Title: "Vyrus — breathe smarter". Meta description in voice, under 155 charact
 1. **Nav** on `--surface-raised`, sticky: wordmark left; links Features, Specs, Pricing (anchor links, `.t-spec` size, mono); small primary "Get Vyrus". Collapses to wordmark + button under 640 px (links hidden, no hamburger needed).
 2. **Hero**, full-bleed `--aqua` band: eyebrow `.t-label` "AI-NATIVE · CLOUD-ENABLED · V1.0"; `h1.t-display-xl` "breathe smarter" + blinking cursor; the subline from Approved lines in `.t-heading` (Martian Mono, lowercase); one `.t-body` sentence of buzzword pitch; primary "Start breathing smarter" + ghost "See the specs"; `mask-hero.jpg` right of the text on desktop, below on phone, on a `--radius-lg` pale field. Three chips under the buttons: AI-native (aqua), Always on (neutral), Agentic (aqua).
 3. **Features** on `--ground`: `h2.t-display-l` "agentic air." then a 3 × 2 grid of cards (`--surface-raised`, `--shadow-card`): Biometric Lens™, Always-Listening Assistant, Sponsored Moments, Ambient Particulate Experience™ (diesel chip), Vyrus Core™ (5 L) (diesel chip), Personalisation. Each: `.t-heading` title, one or two `.t-body` sentences in voice, optional chip.
-4. **Stage**, `.theme-deep` full-bleed: `mask-deep.jpg` large; beside it a spec readout panel on `--surface-inverse` in `.t-spec`: rows for Biometric Lens™ 4K/60, Always-Listening Assistant 42 dB, Vyrus Core™ 5.0 L, Sponsored Moments display, Connectivity "Cloud-native, always-on". A rec chip "Recording" on the panel. `mask-front.jpg` and `mask-side.jpg` as two smaller images below.
-5. **Pricing** (`id="pricing"`) on `--ground`: `h2.t-display-l` "pick your plan."; three TierCards (Lite, Pro featured, Max), stacked on phone with Pro first; under the row the "All plans include Retention Assurance™." line and the tier footnote.
-6. **Retention**, full-bleed `--aqua` band: `.t-display-l` "vyrus never lets you go." (lowercase display), the rest of the Retention line in body, ghost link "See your account" to `account.html`.
+4. **Stage**, `.theme-deep` full-bleed: `mask-deep.jpg` large; beside it a spec readout panel on `--surface-inverse` in `.t-spec`: rows for Biometric Lens™ 4K/60, Always-Listening Assistant 42 dB, Vyrus Core™ 5.0 L, Sponsored Moments display, Retention Assurance™ "Dormant", Connectivity "Cloud-native, always-on". A rec chip "Recording" on the panel. `mask-front.jpg` and `mask-side.jpg` as two smaller images below.
+5. **Pricing** (`id="pricing"`) on `--ground`: `h2.t-display-l` "pick your plan."; three TierCards (Lite, Pro featured, Max), stacked on phone with Pro first; under the row the "All plans include Retention Assurance™." line and the tier footnote. Then:
+   - **EasyBreath panel**: a `--surface-raised` card with the approved EasyBreath panel lines (see Approved lines). Its fume meter shows 0 bars on, labelled "Particulate: none".
+   - **Plan comparison**: a native `<details>` whose `<summary>` is styled as a secondary button, "Compare all plans" (works without JS, keyboard-accessible). Inside is a `<table>` with a caption, plans as columns (Lite, Pro, Max), in a horizontal-scroll wrapper on phones. Rows: Price, Ambient Particulate Experience™, Sponsored Moments, Biometric Lens™, Always-Listening Assistant, Personalisation, Vyrus Core™ (5 L), EasyBreath Pro™ add-on, Retention Assurance™, Countdown before Haptic Renewal Reminders™ (14:59 on every plan). Values come only from the product facts in CLAUDE.md. Under the table: the Retention Assurance™ disclosure in `.t-body-s`, `--ink-muted`.
+6. **Retention**, full-bleed `--aqua` band: `.t-display-l` "vyrus never lets you go." (lowercase display), the approved Retention band body, ghost link "See your account" to `account.html`.
 7. **Footer** on `--surface-inverse`: white wordmark; anchor links; `.t-body-s` lines: fine print with the partner link, tier footnote, "© 2026 Vyrus", fictional-project line.
 
 ### `account.html` (the lapsed state, a demo of the subscriber app)
