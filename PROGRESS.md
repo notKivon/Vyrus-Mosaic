@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 8 — Vyrus polish and session hand-off
-**Next step:** 9 — Mosaic shell + hero + proof row (Session 2)
-**Last verified healthy:** 2026-09-24 HKT, step 7 (account + 404 at 360/768/1280, countdown ticks, console clean)
+**Current step:** 9 — Mosaic shell + hero + proof row (start of Session 2)
+**Next step:** 10 — How it works + products
+**Last verified healthy:** 2026-09-24 HKT, step 8 (Vyrus site complete: all pages 360/768/1280, contrast, word grep, links, console clean)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -19,7 +19,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/vyrus-brand.md. Do not open docs/mosaic-brand
 - [x] 5. **Features + stage sections.** Features grid and the `.theme-deep` stage with spec readout and the three renders. Test responsive, image sizes, alt text. Commit.
 - [x] 6. **Pricing + retention band.** Three TierCards exactly as specified, EasyBreath line under Max, footnotes, retention band. Check every price against CLAUDE.md. Test phone order (Pro first). Commit.
 - [x] 7. **`account.html` + `404.html`.** RenewalBanner with live countdown (static 14:59 without JS), chips, device and Sponsored Moment cards; 404 page. Test countdown, JS-off rendering. Commit.
-- [ ] 8. **Vyrus polish and session hand-off.** Titles, meta descriptions, favicon, OG tags, `noindex` meta on all pages; check contrast of any pairing not in the brand doc; grep the site for `TODO`, `lorem`, `diesel`, `fume`, `spike`, emoji (must be none in visible copy); console clean; all internal links resolve. Update Open items and the Challenges log. Commit and push. **End of Session 1.**
+- [x] 8. **Vyrus polish and session hand-off.** Titles, meta descriptions, favicon, OG tags, `noindex` meta on all pages; check contrast of any pairing not in the brand doc; grep the site for `TODO`, `lorem`, `diesel`, `fume`, `spike`, emoji (must be none in visible copy); console clean; all internal links resolve. Update Open items and the Challenges log. Commit and push. **End of Session 1.**
 
 ## Session 2 — Mosaic site, deploy, hand-back
 Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand.md.
@@ -32,8 +32,10 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - [ ] 14. **Live verification and hand-back.** Fetch both live URLs: pages load, fonts load, images load, 404 pages work, `X-Robots-Tag: noindex` header present (`curl -sI <url> | grep -i robots`), cross-links go the right way. Then give Kevin: both URLs, a short list of tools used, and the Challenges log, ready for his "Build your campaign" and "Evaluate" slides.
 
 ## Open items
-- Cross-links use `#partner-url-pending` until step 13.
+- Cross-links use `#partner-url-pending` until step 13 (Vyrus: footer of index, account and 404).
 - Vyrus `og:image` is relative until step 13.
+- Reduced motion was checked by code (CSS media queries, and a JS guard on typing and the countdown); the preview browser cannot emulate the setting. Worth a manual check once live (macOS: Accessibility → Display → Reduce motion).
+- Local preview tip: plain `python3 -m http.server` lets the browser cache JS; hard-reload if a change seems to be missing.
 
 ## Decisions & gotchas
 - 2026-09-24 HKT — One repo, two Pages projects via root directories; plain static HTML, no build step.
@@ -51,6 +53,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — account.html: the renewal banner and greeting share one aqua band, which satisfies the aqua-field rule; the banner drops its shadow there (flat on aqua). The nav button there is a secondary "See plans", so "Renew now" stays the only primary in view. The banner title stays an `h3`, as the component requires, even though it comes before the page `h1`.
 - 2026-09-24 HKT — 404.html uses root-absolute asset paths (`/assets/...`), because Pages serves it at any missing URL depth. Its header shows only the wordmark, so "Back to Vyrus" is the page's single primary button.
 - 2026-09-24 HKT — "Your account" was added to the footer links on every page.
+- 2026-09-24 HKT — Step 8 checks: every colour pairing on the Vyrus site measured at 5.8:1 or better (lowest `--rec-strong` on `--surface-sunken`); no banned words in rendered visible text (they appear only in class names and alt text); no emoji; all internal links and anchors resolve; `noindex` meta on all three pages.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
