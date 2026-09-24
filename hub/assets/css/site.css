@@ -60,6 +60,18 @@ a{color:inherit;text-underline-offset:3px}
 .company-art .me{fill:var(--mo-ground)}
 @media (min-width:720px){.companies{grid-template-columns:1fr 1fr}}
 
+/* Names */
+.names{display:grid;gap:var(--space-12);margin-top:var(--space-12)}
+.name{display:grid;gap:var(--space-4);align-content:start;padding-top:var(--space-6);border-top:2px solid var(--ink)}
+.name-word{margin:0;font-weight:inherit}
+.name-cursor{color:var(--vy-aqua-strong)}
+.name-sub{color:var(--ink-muted)}
+.name-copy{display:grid;gap:var(--space-4);max-width:var(--measure)}
+.name-copy p{color:var(--ink-muted)}
+.name-copy h4{margin:var(--space-4) 0 0}
+.names-note{margin-top:var(--space-12);color:var(--ink-muted)}
+@media (min-width:800px){.names{grid-template-columns:1fr 1fr}}
+
 /* Money flow */
 .flow{display:grid;gap:var(--space-4);margin-top:var(--space-12);counter-reset:none}
 .flow-step{position:relative;display:grid;gap:var(--space-2);align-content:start;padding:var(--space-6);background:var(--card);border:var(--rule) solid var(--line);border-radius:var(--radius-md)}
