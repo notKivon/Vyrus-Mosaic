@@ -1,0 +1,70 @@
+/* Vyrus design tokens, generated from the Vyrus design system (24 Sep 2026). Single source for every colour, font and size: never hard-code these values elsewhere. */
+:root{
+  --ground:#d9f7f3;
+  --surface-raised:#f5fffd;
+  --surface-sunken:#c2efe9;
+  --surface-inverse:#032427;
+  --ink:#032427;
+  --ink-muted:#2c5659;
+  --ink-inverse:#dffbf8;
+  --line:#a9e3db;
+  --line-strong:#4f8a85;
+  --aqua:#3fe0d0;
+  --aqua-deep:#0aa99b;
+  --aqua-soft:#9ceee4;
+  --aqua-strong:#006b63;
+  --on-aqua:#032427;
+  --amber:#f2a93b;
+  --amber-strong:#7a4900;
+  --rec:#e5383b;
+  --rec-strong:#a81f26;
+  --focus:#032427;
+  --font-mono:"Martian Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-sans:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
+  --space-16:64px;
+  --radius-sm:6px;
+  --radius-md:10px;
+  --radius-lg:20px;
+  --shadow-card:0 1px 0 rgba(3,36,39,0.08), 0 10px 28px rgba(3,36,39,0.08);
+}
+/* deep theme: the product-shot stage section only */
+.theme-deep{
+  --ground:#03191b;
+  --surface-raised:#082628;
+  --surface-sunken:#021011;
+  --surface-inverse:#dffbf8;
+  --ink:#dffbf8;
+  --ink-muted:#8cc0bb;
+  --ink-inverse:#032427;
+  --line:#174043;
+  --line-strong:#4c8580;
+  --aqua-deep:#1fc4b5;
+  --aqua-soft:#0d3a3c;
+  --aqua-strong:#6ff3e6;
+  --amber:#f5b457;
+  --amber-strong:#f7c275;
+  --rec:#ff5a5c;
+  --rec-strong:#ff8284;
+  --focus:#dffbf8;
+  --shadow-card:0 1px 0 rgba(0,0,0,0.5), 0 10px 28px rgba(0,0,0,0.4);
+  background:var(--ground);color:var(--ink);
+}
+/* Type scale: one class per named style (.t-<name>) */
+.t-display-xl{font-family:var(--font-mono);font-size:64px;line-height:72px;font-weight:500;letter-spacing:-0.04em;}
+.t-display-l{font-family:var(--font-mono);font-size:40px;line-height:48px;font-weight:500;letter-spacing:-0.03em;}
+.t-heading{font-family:var(--font-mono);font-size:24px;line-height:32px;font-weight:500;letter-spacing:-0.02em;}
+.t-price{font-family:var(--font-mono);font-size:36px;line-height:40px;font-weight:600;letter-spacing:-0.04em;font-variant-numeric:lining-nums tabular-nums;}
+.t-title{font-family:var(--font-sans);font-size:20px;line-height:28px;font-weight:600;}
+.t-body{font-family:var(--font-sans);font-size:17px;line-height:26px;font-weight:400;}
+.t-body-s{font-family:var(--font-sans);font-size:14px;line-height:20px;font-weight:400;}
+.t-label{font-family:var(--font-mono);font-size:11px;line-height:16px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;}
+.t-spec{font-family:var(--font-mono);font-size:13px;line-height:20px;font-weight:400;}
+/* Phone: shrink display sizes below 640px */
+@media (max-width:640px){.t-display-xl{font-size:40px;line-height:48px}.t-display-l{font-size:30px;line-height:38px}}

@@ -1,0 +1,74 @@
+/* Mosaic design tokens, generated from the Mosaic design system (24 Sep 2026). Single source for every colour, font and size: never hard-code these values elsewhere. */
+:root{
+  --ground:#0b1a33;
+  --surface-raised:#11244a;
+  --surface-sunken:#07122a;
+  --ink:#f0ebe0;
+  --ink-muted:#a8b3c7;
+  --line:#223a60;
+  --line-strong:#5c7299;
+  --navy:#1d3d73;
+  --blue:#3b67b0;
+  --on-navy:#f0ebe0;
+  --stone:#1c3257;
+  --brass:#c9973f;
+  --brass-strong:#e0b565;
+  --on-brass:#1a1206;
+  --teal:#2fb3a6;
+  --teal-strong:#5fd0c4;
+  --flag:#e0513f;
+  --flag-strong:#f59080;
+  --focus:#e0b565;
+  --font-serif:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-sans:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
+  --space-16:64px;
+  --radius-0:0px;
+  --radius-sm:2px;
+  --radius-eye:50%;
+}
+/* paper theme: print one-pagers only; the website uses Navy */
+.theme-paper{
+  --ground:#efe9dd;
+  --surface-raised:#faf7f0;
+  --surface-sunken:#e5ddcd;
+  --ink:#0b1a33;
+  --ink-muted:#46506a;
+  --line:#d3c9b6;
+  --line-strong:#7f8396;
+  --navy:#0b1a33;
+  --blue:#2d5596;
+  --stone:#c9c2b2;
+  --brass-strong:#7a5514;
+  --teal:#1f9c90;
+  --teal-strong:#0b6c63;
+  --flag:#c8402e;
+  --flag-strong:#a12e1d;
+  --focus:#2d5596;
+  background:var(--ground);color:var(--ink);
+}
+/* Type scale: one class per named style (.t-<name>) */
+.t-display-xl{font-family:var(--font-serif);font-size:76px;line-height:80px;font-weight:500;letter-spacing:-0.02em;}
+.t-display-italic{font-family:var(--font-serif);font-size:76px;line-height:80px;font-weight:400;letter-spacing:-0.02em;font-style:italic;}
+.t-display-l{font-family:var(--font-serif);font-size:52px;line-height:58px;font-weight:500;letter-spacing:-0.015em;}
+.t-heading{font-family:var(--font-serif);font-size:30px;line-height:36px;font-weight:500;letter-spacing:-0.01em;}
+.t-figure{font-family:var(--font-serif);font-size:48px;line-height:52px;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:lining-nums tabular-nums;}
+.t-lede{font-family:var(--font-serif);font-size:22px;line-height:32px;font-weight:400;}
+.t-body{font-family:var(--font-serif);font-size:18px;line-height:28px;font-weight:400;}
+.t-body-s{font-family:var(--font-serif);font-size:15px;line-height:22px;font-weight:400;}
+.t-quote{font-family:var(--font-serif);font-size:26px;line-height:36px;font-weight:400;font-style:italic;}
+.t-ui{font-family:var(--font-sans);font-size:15px;line-height:20px;font-weight:600;}
+.t-data{font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:400;font-variant-numeric:lining-nums tabular-nums;}
+.t-label{font-family:var(--font-mono);font-size:11px;line-height:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;}
+/* Italic phrase inside a display headline: <h1 class="t-display-xl">See the <em>whole picture.</em></h1> */
+.t-display-xl em,.t-display-l em{font-style:italic;font-weight:400;color:var(--brass-strong)}
+.t-display-italic{color:var(--brass-strong)}
+/* Phone: shrink display sizes below 640px */
+@media (max-width:640px){.t-display-xl,.t-display-italic{font-size:46px;line-height:50px}.t-display-l{font-size:34px;line-height:40px}.t-figure{font-size:36px;line-height:40px}}

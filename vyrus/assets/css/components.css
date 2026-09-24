@@ -1,0 +1,56 @@
+/* Vyrus components: Button, Chip, TierCard, RenewalBanner. From the Vyrus design system. */
+.vy-root{font-family:var(--font-sans);color:var(--ink)}
+.vy-btn{appearance:none;border:0;cursor:pointer;font-family:var(--font-mono);font-weight:500;font-size:14px;line-height:20px;padding:var(--space-3) var(--space-6);border-radius:var(--radius-md);display:inline-flex;align-items:center;gap:var(--space-2);transition:background .15s,color .15s}
+.vy-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.vy-btn[disabled]{opacity:.4;cursor:not-allowed}
+.vy-btn-primary{background:var(--surface-inverse);color:var(--ink-inverse)}
+.vy-btn-primary::after{content:"_";color:var(--aqua);margin-left:calc(-1 * var(--space-2))}
+.vy-btn-primary:hover:not([disabled]){background:var(--aqua);color:var(--on-aqua)}
+.vy-btn-primary:hover:not([disabled])::after{color:var(--on-aqua)}
+.vy-btn-secondary{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line-strong)}
+.vy-btn-secondary:hover:not([disabled]){box-shadow:inset 0 0 0 1.5px var(--ink)}
+.vy-btn-ghost{background:transparent;color:var(--aqua-strong);padding-left:var(--space-1);padding-right:var(--space-1);text-decoration:underline;text-underline-offset:4px}
+.vy-btn-sm{font-size:13px;line-height:18px;padding:var(--space-2) var(--space-4)}
+.vy-chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;line-height:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:var(--radius-sm);background:var(--surface-sunken);color:var(--ink-muted)}
+.vy-chip-aqua{background:var(--aqua-soft);color:var(--ink)}
+.vy-chip-diesel{color:var(--amber-strong)}
+.vy-chip-diesel::before{content:"";width:10px;height:6px;border-radius:2px;background:var(--amber)}
+.vy-chip-rec{color:var(--rec-strong)}
+.vy-chip-rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rec);animation:vy-blink 1s steps(2,start) infinite}
+.vy-chip-lapsed{color:var(--rec-strong)}
+.vy-chip-lapsed::before{content:"";width:10px;height:8px;background:var(--rec);clip-path:polygon(0 0,100% 0,50% 100%)}
+@keyframes vy-blink{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.vy-chip-rec::before{animation:none}}
+.vy-tier{background:var(--surface-raised);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);min-width:0;color:var(--ink)}
+.vy-tier.is-featured{background:var(--aqua);box-shadow:none;color:var(--on-aqua)}
+.vy-tier.is-featured .vy-tier-price span,.vy-tier.is-featured .vy-fume{color:var(--on-aqua)}
+.vy-tier.is-featured .vy-chip{background:var(--surface-inverse);color:var(--ink-inverse)}
+.vy-tier.is-featured .vy-fume i b{background:rgba(3,36,39,.18)}
+.vy-tier.is-featured .vy-fume i b.on{background:var(--on-aqua)}
+.vy-tier.is-featured li::before{background:var(--on-aqua)}
+.vy-tier.is-featured .vy-btn:focus-visible{outline-color:var(--on-aqua)}
+.vy-tier-head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-2)}
+.vy-tier-name{font-family:var(--font-sans);font-weight:600;font-size:20px;line-height:28px;margin:0}
+.vy-tier-price{display:flex;align-items:baseline;gap:var(--space-2)}
+.vy-tier-price b{font-family:var(--font-mono);font-weight:600;font-size:36px;line-height:40px;letter-spacing:-.04em}
+.vy-tier-price span{font-size:14px;line-height:20px;color:var(--ink-muted)}
+.vy-tier ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-2);font-size:15px;line-height:22px}
+.vy-tier li{display:flex;gap:var(--space-2);align-items:baseline}
+.vy-tier li::before{content:"";flex:none;width:6px;height:6px;background:var(--aqua-deep);transform:translateY(-2px)}
+.vy-fume{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-strong);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);white-space:nowrap}
+.vy-fume i{display:inline-flex;gap:3px}
+.vy-fume i b{width:14px;height:6px;border-radius:2px;background:var(--line)}
+.vy-fume i b.on{background:var(--amber)}
+.vy-tier .vy-btn{justify-content:center;margin-top:auto}
+.vy-renew{position:relative;background:var(--surface-raised);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:calc(var(--space-6) + 10px) var(--space-6) var(--space-6);display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4) var(--space-6);overflow:hidden}
+.vy-renew-spikes{position:absolute;left:var(--space-6);top:0;width:calc(100% - 2 * var(--space-6));height:10px;display:block}
+.vy-renew-spikes path{fill:var(--rec)}
+.vy-renew-body{flex:1 1 260px;min-width:0;display:grid;gap:var(--space-1)}
+.vy-renew-body h3{margin:0;font-family:var(--font-mono);font-weight:500;font-size:20px;line-height:28px;letter-spacing:-.02em;color:var(--ink)}
+.vy-renew-body p{margin:0;font-size:15px;line-height:22px;color:var(--ink-muted)}
+.vy-renew-clock{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:28px;line-height:32px;font-weight:500;color:var(--rec-strong);display:grid;gap:2px}
+.vy-renew-clock small{font-size:11px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+/* Cursor: aqua underscore, blinks at 1 Hz. Once per page. */
+.vy-cursor{color:var(--aqua)}
+.vy-cursor.blink{animation:vy-blink 1s steps(2,start) infinite}
+@media (prefers-reduced-motion:reduce){.vy-cursor.blink{animation:none}}

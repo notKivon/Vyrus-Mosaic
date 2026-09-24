@@ -1,0 +1,13 @@
+/* Vyrus page layout. Colours, type and components live in tokens.css and components.css. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-sans)}
+img{max-width:100%;height:auto;display:block}
+a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+.container{max-width:1200px;margin:0 auto;padding:0 var(--space-6)}
+@media (max-width:640px){.container{padding:0 var(--space-4)}}
+
+/* Wordmark */
+.vy-wordmark{font-family:var(--font-mono);font-weight:500;font-size:22px;line-height:32px;letter-spacing:-0.02em;color:var(--ink);text-decoration:none;display:inline-block;min-width:72px}
+.vy-wordmark .vy-cursor{color:var(--aqua-deep)}
