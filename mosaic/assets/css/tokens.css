@@ -33,7 +33,8 @@
   --radius-0:0px;
   --radius-sm:2px;
   --radius-eye:50%;
-  --wordmark-size:40px;
+  --wordmark-size:38px;
+  --wordmark-gap:10px;
 }
 /* paper theme: print one-pagers only; the website uses Navy */
 .theme-paper{

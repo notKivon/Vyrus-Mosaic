@@ -22,8 +22,9 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 .skip-link{position:absolute;left:var(--space-4);top:calc(-1 * var(--space-16));z-index:30;background:var(--brass);color:var(--on-brass);font-family:var(--font-sans);font-weight:600;padding:var(--space-2) var(--space-4);border-radius:var(--radius-sm)}
 .skip-link:focus{top:var(--space-2)}
 
-/* Lockup: mark + "Mosaic", one tile width apart */
-.lockup{display:inline-flex;align-items:center;gap:var(--space-2);min-width:96px;padding:var(--space-1) 0;color:var(--ink);text-decoration:none;font-family:var(--font-serif);font-weight:600;font-size:var(--wordmark-size);line-height:1;letter-spacing:-0.01em}
+/* Lockup: mark + "Mosaic"; the M spans the mark, baseline on its bottom edge */
+.lockup{display:inline-flex;align-items:flex-end;gap:var(--wordmark-gap);min-width:96px;padding:var(--space-1) 0;color:var(--ink);text-decoration:none;font-family:var(--font-serif);font-weight:600;font-size:var(--wordmark-size);line-height:0.72;letter-spacing:-0.01em}
+.lockup > span{display:block;transform:translateY(0.128em)}
 .lockup img{width:28px;height:28px;flex:none;display:block}
 
 /* Nav */
