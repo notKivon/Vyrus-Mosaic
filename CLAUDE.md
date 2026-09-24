@@ -105,8 +105,9 @@ Two Pages projects on the same repo, production branch `main`:
 | Build output directory | `/` | `/` |
 | Root directory | `vyrus` | `mosaic` |
 | Build watch paths, include | `vyrus/*` | `mosaic/*` |
+| Custom domain | `vyrus.aiml.11123334.xyz` | `mosaic.aiml.11123334.xyz` |
 
-The resulting `*.pages.dev` URLs are recorded in PROGRESS.md under "Project values" once known.
+Each project gets its custom domain under Custom domains in the Pages dashboard (Cloudflare creates the CNAME to the project's `*.pages.dev` host and issues the certificate). Cross-links and absolute URLs always use the custom domains (`https://vyrus.aiml.11123334.xyz/`, `https://mosaic.aiml.11123334.xyz/`), never `pages.dev`. The `*.pages.dev` URLs keep working and are recorded in PROGRESS.md under "Project values" once known.
 
 ## Working agreement (multi-session build)
 - Build in the order in PROGRESS.md, one step at a time. The build is split into two sessions; do not start a Session 2 step in Session 1.
