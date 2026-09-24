@@ -1,8 +1,8 @@
 # Vyrus + Mosaic websites — Build Progress
 
-**Current step:** 3 — Renders
-**Next step:** 4 — Vyrus shell + hero
-**Last verified healthy:** 2026-09-24 HKT, step 2 (scaffold page serves, fonts and seed CSS load, console clean)
+**Current step:** 4 — Vyrus shell + hero
+**Next step:** 5 — Features + stage sections
+**Last verified healthy:** 2026-09-24 HKT, step 3 (renders copied, all under 300 KB)
 
 ## Project values
 - GitHub repo URL: https://github.com/notKivon/Vyrus-Mosaic (public)
@@ -14,7 +14,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/vyrus-brand.md. Do not open docs/mosaic-brand
 
 - [x] 1. ⏸️ **Kevin: create the GitHub repo.** On github.com: New repository → name `vyrus-mosaic` (or your choice) → Public or Private → do **not** add a README, .gitignore or licence → Create. Report back the HTTPS URL. (Alternative: if `gh auth status` shows you are logged in, the agent may run `gh repo create vyrus-mosaic --private --source . --remote origin` after you approve it.)
 - [x] 2. **Scaffold and first push.** `git init -b main`; add `.gitignore` check, short `README.md` (what the repo is, how to preview, pointer to CLAUDE.md, fictional-project line); create the folder layout from CLAUDE.md; `vyrus/index.html` as a minimal page that loads fonts, `tokens.css`, `components.css`, `site.css` and shows the wordmark plus one primary button, so the seed CSS is proven to load; `vyrus/_headers` with `X-Robots-Tag: noindex`. Test: serve and confirm fonts and button render. Commit, add remote, push.
-- [ ] 3. **Renders.** With Kevin's approval to read `~/Pictures/Vyrus Mockup/`, copy the four v2 JPEGs into `vyrus/assets/img/` under the names in the brand doc and make 640 px versions with `sips`. Check each file is under 300 KB (re-export at lower quality with `sips -s formatOptions 70` if not). If the folder is missing, stop and ask Kevin to drop the files into `vyrus/assets/img/`. Commit.
+- [x] 3. **Renders.** With Kevin's approval to read `~/Pictures/Vyrus Mockup/`, copy the four v2 JPEGs into `vyrus/assets/img/` under the names in the brand doc and make 640 px versions with `sips`. Check each file is under 300 KB (re-export at lower quality with `sips -s formatOptions 70` if not). If the folder is missing, stop and ask Kevin to drop the files into `vyrus/assets/img/`. Commit.
 - [ ] 4. **Vyrus shell + hero.** `site.css` base (box-sizing, body on `--ground`, container, section spacing, nav, footer), `site.js` (cursor typing enhancement, purchase dialog), nav, hero, footer with fictional line and `#partner-url-pending` link, the purchase dialog. Test at 360/768/1280 px, keyboard-only through nav and dialog, reduced motion. Commit.
 - [ ] 5. **Features + stage sections.** Features grid and the `.theme-deep` stage with spec readout and the three renders. Test responsive, image sizes, alt text. Commit.
 - [ ] 6. **Pricing + retention band.** Three TierCards exactly as specified, EasyBreath line under Max, footnotes, retention band. Check every price against CLAUDE.md. Test phone order (Pro first). Commit.
@@ -42,6 +42,7 @@ Read: CLAUDE.md, PROGRESS.md, docs/mosaic-brand.md. Do not open docs/vyrus-brand
 - 2026-09-24 HKT — Mosaic uses SVG tile art only (no licensed dusk photographs available).
 - 2026-09-24 HKT — Kevin created the repo himself as public (`notKivon/Vyrus-Mosaic`); nothing personal is committed, per the secrets policy.
 - 2026-09-24 HKT — tokens.css and components.css were generated from the claude.ai design systems and seeded into the repo; they are the source of truth for styling from now on.
+- 2026-09-24 HKT — Renders: four 1280×960 originals (56–74 KB) plus 640 px versions (31–42 KB), no re-compression needed. The side render shows "diesel_5l" printed on the canister; kept because it is the approved render and the no-diesel rule covers written copy only.
 
 ## Challenges log
 *(one line per notable problem and how it was solved; Kevin uses this for the evaluation slides)*
