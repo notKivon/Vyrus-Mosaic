@@ -135,3 +135,15 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 .not-found-inner{display:grid;gap:var(--space-6);justify-items:start}
 .not-found-art{width:152px;height:auto}
 .tile-missing{fill:none;stroke:var(--line-strong);stroke-width:1;stroke-dasharray:4 3}
+
+/* The picture (picture.js): copy left, 20 x 20 tile face right; the SVG is the finished state */
+.picture{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:var(--space-8) var(--space-12);align-items:center}
+.picture-copy{display:grid;gap:var(--space-6);justify-items:start}
+.picture-copy h2{max-width:14ch}
+.picture-figure{display:grid;gap:var(--space-3);width:100%;max-width:440px}
+.picture-art,.picture-canvas{width:100%;height:auto;aspect-ratio:1}
+.picture-canvas{display:block}
+.picture-figure.is-live .picture-art{display:none}
+.picture-caption{color:var(--ink-muted)}
+.picture-caption.is-complete{color:var(--brass-strong)}
+@media (max-width:959px){.picture{grid-template-columns:minmax(0,1fr)}}
