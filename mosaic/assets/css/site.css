@@ -67,7 +67,7 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 /* Proof row */
 .proof{display:grid;gap:var(--space-6)}
 .tile-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-2)}
-@media (max-width:767px){.tile-row{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:959px){.tile-row{grid-template-columns:minmax(0,1fr)}}
 
 /* Footer */
 .site-footer{background:var(--surface-sunken);border-top:1px solid var(--line);padding:var(--space-12) 0}
@@ -147,3 +147,11 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
 .picture-caption{color:var(--ink-muted)}
 .picture-caption.is-complete{color:var(--brass-strong)}
 @media (max-width:959px){.picture{grid-template-columns:minmax(0,1fr)}}
+
+/* Live network panel (site.js): decorative endpoint map under the proof row */
+.endpoint-map{display:grid;gap:var(--space-3);margin-top:var(--space-2)}
+.endpoint-map svg{width:100%;height:auto}
+.endpoint-map circle{fill:var(--line-strong);transform-box:fill-box;transform-origin:center}
+.endpoint-map circle.is-pulse{animation:endpoint-pulse 1.2s ease-in-out}
+@keyframes endpoint-pulse{50%{fill:var(--teal);transform:scale(2)}to{fill:var(--line-strong)}}
+@media (prefers-reduced-motion:reduce){.endpoint-map circle.is-pulse{animation:none}}
