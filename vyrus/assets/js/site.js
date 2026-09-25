@@ -59,4 +59,16 @@
       }
     }, 30);
   }
+
+  // Tab-title nudge: a word while the tab is in the background, a greeting on return. Nothing is counted or kept.
+  var title = document.title, welcome = 0;
+  document.addEventListener('visibilitychange', function () {
+    clearTimeout(welcome);
+    if (document.hidden) {
+      document.title = 'a pause in your journey_';
+    } else {
+      document.title = 'welcome back_';
+      welcome = setTimeout(function () { document.title = title; }, 2000);
+    }
+  });
 })();

@@ -171,3 +171,28 @@ a.vy-btn:not(.vy-btn-ghost){text-decoration:none}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .compare-table td{white-space:nowrap}
 @media (max-width:640px){.compare-table th,.compare-table td{padding:var(--space-3) var(--space-4)}.compare-table caption{padding:var(--space-4) var(--space-4) var(--space-2)}}
+
+/* Hero particle field (particles.js): decorative canvas behind the hero copy */
+.hero{position:relative;overflow:hidden}
+.hero-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero>.container{position:relative}
+
+/* Hero 3D mask (mask3d.js): sits over the render in the same 4:3 box; the render hides once the model loads */
+.hero-media{position:relative}
+.hero-model{position:absolute;inset:0;width:100%;height:100%;background-color:transparent;--poster-color:transparent}
+.hero-model:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.hero-media.is-3d img{visibility:hidden}
+
+/* Pause my journey (pause.js): four screens in one dialog, one visible at a time */
+.pause-screen{display:grid;gap:var(--space-4);justify-items:start;width:100%}
+.pause-screen[hidden]{display:none}
+.pause-screen h2:focus{outline:none}
+.pause-spikes{display:block}
+.pause-spikes path{fill:var(--rec)}
+.pause-offer{width:100%;gap:var(--space-2)}
+.pause-offer .vy-tier-name{margin:0}
+[data-onward]{transition:transform .2s ease}
+.pause-bar{width:100%;height:var(--space-1);border-radius:var(--radius-sm);background:var(--line);overflow:hidden}
+.pause-bar span{display:block;width:40%;height:100%;background:var(--aqua-deep)}
+@media (prefers-reduced-motion:no-preference){.pause-bar span{animation:pause-bar 1.2s ease-in-out infinite}}
+@keyframes pause-bar{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
