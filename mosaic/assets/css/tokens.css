@@ -35,6 +35,12 @@
   --radius-eye:50%;
   --wordmark-size:38px;
   --wordmark-gap:10px;
+  /* Session 4: full-screen segments */
+  --nav-h:65px;
+  --pager-size:10px;
+  --quote-display-size:clamp(34px,4.6vw,60px);
+  --quote-display-leading:1.15;
+  --quote-display-tracking:-0.015em;
 }
 /* paper theme: print one-pagers only; the website uses Navy */
 .theme-paper{
