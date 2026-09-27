@@ -11,7 +11,7 @@
 
   var screens = [
     '<h2 class="t-heading">before you go' + cursor + '</h2>' +
-      '<p class="t-body">Pausing ends Personalisation, your Always-Listening Assistant and 412 Sponsored Moments tailored to you.</p>' +
+      '<p class="t-body">Pausing ends Personalisation, your Always-Listening Assistant, and 412 Sponsored Moments tailored to you.</p>' +
       '<div class="btn-row">' + keep + onward + '</div>',
     '<h2 class="t-heading">are you sure?' + cursor + '</h2>' +
       '<p class="t-body">Retention Assurance™ activates the moment your journey pauses.</p>' +

@@ -1,5 +1,5 @@
 /* Vyrus in 3D: swaps the hero render for the interactive mask once the model has loaded.
-   The <img> stays in place underneath as the fallback, so JS off, no module support or a failed load
+   The <img> stays in place underneath as the fallback, so JS off, no module support, or a failed load
    all show the same render as before. Reduced motion keeps drag but drops auto-rotate and the scroll link. */
 import './vendor/model-viewer.min.js';
 

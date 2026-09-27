@@ -1,5 +1,5 @@
 /* Full-screen segments: eased one-gesture paging on desktop, a pass-through for tall sections, and the segment pager.
-   Paging only moves the page in response to the visitor's own wheel or keys; nothing is read, counted or stored. */
+   Paging only moves the page in response to the visitor's own wheel or keys; nothing is read, counted, or stored. */
 (function () {
   var root = document.documentElement;
   var sections = Array.prototype.slice.call(document.querySelectorAll('[data-seg]'));

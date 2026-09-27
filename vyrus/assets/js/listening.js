@@ -1,6 +1,6 @@
 /* "Listening…" pill: shows at the worst moments. Three triggers, all from the page's own state:
-   idle (no pointer movement, press or scroll for 6 s), very fast scrolling, and the pointer entering a pause control.
-   Nothing is counted, logged or stored: the state is a few in-memory timers. */
+   idle (no pointer movement, press, or scroll for 6 s), very fast scrolling, and the pointer entering a pause control.
+   Nothing is counted, logged, or stored: the state is a few in-memory timers. */
 (function () {
   var pill = document.querySelector('.listen-pill');
   if (!pill) return;
@@ -13,7 +13,7 @@
     showTimer = setTimeout(function () { pill.classList.remove('on'); }, ms);
   }
 
-  // 1. Idle: the timer resets only on pointer movement, pointer presses and scrolling; any of them hides an idle pill
+  // 1. Idle: the timer resets only on pointer movement, pointer presses, and scrolling; any of them hides an idle pill
   function activity() {
     clearTimeout(idleTimer);
     if (idleShown) { idleShown = false; listen(400); }

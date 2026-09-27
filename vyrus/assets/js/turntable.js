@@ -1,5 +1,5 @@
 /* Turntable (#specs): the section pins for 250vh and scroll progress turns the mask (the four photos, or the 3D model
-   once turntable3d.js hands it over), runs the degree meter and switches the callouts and their leader lines on.
+   once turntable3d.js hands it over), runs the degree meter, and switches the callouts and their leader lines on.
    Without JS: a normal dark section with the front photo and all callouts. Reduced motion: unpinned, everything shown. */
 (function () {
   var tt = document.querySelector('.turntable');

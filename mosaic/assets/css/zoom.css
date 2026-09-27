@@ -1,5 +1,5 @@
 /* The picture (zoom.js). Without JS, or under reduced motion: copy beside the finished static map.
-   Once zoom.js runs (.is-live): a 300vh scroll-through section with a sticky stage holding the canvas, scrim and copy. */
+   Once zoom.js runs (.is-live): a 300vh scroll-through section with a sticky stage holding the canvas, scrim, and copy. */
 .zoom-inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-8) var(--space-12);align-items:center}
 .zoom-copy{display:grid;gap:var(--space-6);justify-items:start}
 .zoom-copy h2{max-width:14ch}
