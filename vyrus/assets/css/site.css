@@ -60,7 +60,7 @@ a.vy-btn:not(.vy-btn-ghost){text-decoration:none}
   .hero-sub{font-size:20px;line-height:28px}
 }
 
-/* Hero typing enhancement (site.js); the real text stays in place, transparent, so layout never shifts */
+/* Hero headline decode (site.js); the real text stays in place, transparent, so layout never shifts */
 .is-typing>:not(.type-overlay){color:transparent}
 .type-overlay{position:absolute;inset:0}
 
