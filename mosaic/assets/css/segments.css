@@ -26,3 +26,13 @@ html.is-seg .quote-band .quote{gap:var(--space-6)}
 @media (prefers-reduced-motion:reduce){
   .seg-pager .sq,.seg-pager .lbl{transition:none}
 }
+
+/* Hero (hero.js): the italic phrase resolves from tiles; the tiles then fly in, each turning about its own centre */
+.resolve-word{display:inline-block;white-space:nowrap;position:relative}
+.resolve-word.is-resolving{color:transparent}
+.resolve-word canvas{position:absolute;pointer-events:none;transition:opacity .3s ease}
+.resolve-word canvas.is-done{opacity:0}
+.baseline-probe{display:inline-block;width:0;height:0;vertical-align:baseline}
+.hero-art>*{transform-box:fill-box;transform-origin:center}
+.hero-art{overflow:visible}
+.hero{overflow-x:clip}
