@@ -43,6 +43,8 @@
   --space-16:64px;
   --space-24:96px;
   --mo-wordmark-gap:10px;
+  /* Mark beside the display-size "Mosaic": as tall as the capital M (Newsreader cap height), same gap ratio as the lockup */
+  --mo-mark-cap:0.687em; --mo-mark-gap:0.26em;
   --radius-sm:4px;
   --radius-md:12px;
   --rule:1px;

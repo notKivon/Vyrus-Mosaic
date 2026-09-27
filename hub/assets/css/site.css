@@ -65,6 +65,7 @@ a{color:inherit;text-underline-offset:3px}
 .name{display:grid;gap:var(--space-4);align-content:start;padding-top:var(--space-6);border-top:2px solid var(--ink)}
 .name-word{margin:0;font-weight:inherit}
 .name-cursor{color:var(--vy-aqua-strong)}
+.name-mark{display:inline-block;height:var(--mo-mark-cap);width:auto;margin-right:var(--mo-mark-gap);vertical-align:baseline}
 .name-sub{color:var(--ink-muted)}
 .name-copy{display:grid;gap:var(--space-4);max-width:var(--measure)}
 .name-copy p{color:var(--ink-muted)}
