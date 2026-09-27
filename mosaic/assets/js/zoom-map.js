@@ -1,5 +1,5 @@
 /* The picture: deterministic street-map generator for zoom.js (fixed seed, no real geography).
-   moZoomMap({ cols, rows, P, G, ox, oy, W, H, phone }) returns the tile kinds, the route, the marks and the label values. */
+   moZoomMap({ cols, rows, P, G, ox, oy, W, H, phone }) returns the tile kinds, the route, the marks, and the label values. */
 (function () {
   var K = { STREET: 0, BLOCK: 1, RAISED: 2, PARK: 3, ENDPOINT: 4, ROUTE: 5, STOP: 6, HOME: 7 };
   var STOP_TIMES = ['08:14 HKT', '11:02 HKT', '18:40 HKT'];

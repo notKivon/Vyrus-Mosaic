@@ -12,7 +12,7 @@
   if (!stage || !ctx) return;
   var K = gen.K;
 
-  // Canvas, scrim and hint exist only while the zoom runs
+  // Canvas, scrim, and hint exist only while the zoom runs
   canvas.className = 'zoom-canvas';
   canvas.setAttribute('aria-hidden', 'true');
   var scrim = document.createElement('div');

@@ -1,4 +1,4 @@
-/* Project hub components. Colours, type and spacing come from tokens.css only. */
+/* Project hub components. Colours, type, and spacing come from tokens.css only. */
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:var(--space-3) var(--space-6);border:var(--rule) solid var(--ink);border-radius:var(--radius-sm);text-decoration:none;transition:background-color .15s ease,color .15s ease}

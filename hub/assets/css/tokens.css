@@ -1,4 +1,4 @@
-/* Project hub tokens (written by hand, 24 Sep 2026). Single source for every colour, font and size: never hard-code these values elsewhere. */
+/* Project hub tokens (written by hand, 24 Sep 2026). Single source for every colour, font, and size: never hard-code these values elsewhere. */
 :root{
   --paper:#f4f1ea;
   --card:#fbfaf6;

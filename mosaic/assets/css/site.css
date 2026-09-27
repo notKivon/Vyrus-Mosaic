@@ -1,4 +1,4 @@
-/* Mosaic page layout. Colours, type and components live in tokens.css and components.css. */
+/* Mosaic page layout. Colours, type, and components live in tokens.css and components.css. */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--space-16) + var(--space-4))}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-serif)}
