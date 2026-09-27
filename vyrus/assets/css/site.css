@@ -195,3 +195,8 @@ a.vy-btn:not(.vy-btn-ghost){text-decoration:none}
 .pause-bar span{display:block;width:40%;height:100%;background:var(--aqua-deep)}
 @media (prefers-reduced-motion:no-preference){.pause-bar span{animation:pause-bar 1.2s ease-in-out infinite}}
 @keyframes pause-bar{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+
+/* Pricing particle field (particles.js, vyFumes): behind the tier cards */
+.pricing-seg{position:relative;overflow:hidden}
+.pricing-seg>.container{position:relative}
+.pricing-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
