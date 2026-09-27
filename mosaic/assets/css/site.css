@@ -112,6 +112,13 @@ a.mo-btn:not(.mo-btn-quiet){text-decoration:none}
     grid-template-areas:"loc loc loc c4 face face" "c1 key key key face face" "c2 key key key c3 ." "voice voice voice pur pur pur"}
 }
 @media (max-width:640px){.converge .mo-tile{padding:var(--space-3)}}
+/* Data flow (flow.js): pips in the gaps; a teal ring as a tile sends, a brass ring on The picture as it matches */
+.converge{position:relative}
+.flow-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.converge .mo-tile{transition:box-shadow .3s ease-out}
+.converge .mo-tile.is-sent{box-shadow:inset 0 0 0 1px var(--teal);transition:none}
+.converge .mo-tile.is-key{transition:box-shadow .45s ease-out}
+.converge .mo-tile.is-key.is-match{box-shadow:0 0 0 3px var(--brass-strong);transition:none}
 
 /* Products: two raised panels split by a 1 px rule */
 .products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);box-shadow:0 0 0 1px var(--line)}
