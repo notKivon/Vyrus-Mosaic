@@ -15,3 +15,9 @@ html.vy-paging{scroll-behavior:auto}
   html.vy-seg .seg-pager{display:grid;gap:var(--space-3);position:fixed;right:var(--space-4);top:50%;transform:translateY(-50%);z-index:22}
 }
 @media (prefers-reduced-motion:reduce){.seg-pager .lbl{transition:none}}
+
+/* Listening pill (listening.js): fixed under the nav on the right; sentence case */
+.listen-pill{position:fixed;top:calc(var(--nav-h) + var(--space-4));right:var(--space-4);z-index:25;opacity:0;transform:translateY(-4px);transition:opacity .35s,transform .35s;pointer-events:none}
+.listen-pill .vy-chip{background:var(--surface-raised);box-shadow:var(--shadow-card);text-transform:none}
+.listen-pill.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.listen-pill{transition:none;transform:none}}
