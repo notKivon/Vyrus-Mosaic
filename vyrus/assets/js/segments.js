@@ -37,8 +37,8 @@
   }
 
   /* Eased paging: easeInOutCubic, driven one frame at a time. A fresh gesture during a move queues
-     up to two more steps in the same direction, or retargets at once in the other. */
-  var anim = 0, animating = false, locked = false, lastWheel = 0, lastDir = 0, lastAbs = 0, moveDir = 0, queue = 0;
+     one more step in the same direction, or retargets at once in the other. */
+  var anim = 0, animating = false, locked = false, lastWheel = 0, lastDir = 0, peak = 0, trough = 0, gestureAt = 0, moveDir = 0, queue = 0;
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function jump(top) { window.scrollTo({ top: top, behavior: 'instant' }); }
 
@@ -47,7 +47,7 @@
     target = Math.round(clamp(target, 0, maxScroll()));
     var from = window.scrollY, dist = target - from;
     if (reduceMq.matches || Math.abs(dist) < 1) { jump(target); animating = false; locked = true; queue = 0; return; }
-    if (dur == null) dur = Math.abs(dist) > window.innerHeight * 0.5 ? 900 : 600;
+    if (dur == null) dur = Math.abs(dist) > window.innerHeight * 0.5 ? 1100 : 700;
     animating = true;
     moveDir = dist > 0 ? 1 : -1;
     var t0 = performance.now();
@@ -71,10 +71,10 @@
 
   // A fresh gesture or key press while a move animates
   function during(dir) {
-    if (dir === moveDir) { if (queue < 2) queue++; return; }
+    if (dir === moveDir) { if (queue < 1) queue++; return; }
     queue = 0;
     var p = plan(dir, dir);
-    if (p.to != null) animateTo(p.to, 600);
+    if (p.to != null) animateTo(p.to, 700);
     else if (p.clamp != null) animateTo(p.clamp, 450);
     else { cancelAnimationFrame(anim); animating = false; locked = true; }
   }
@@ -104,10 +104,14 @@
     var dy = e.deltaY * (e.deltaMode === 1 ? 40 : e.deltaMode === 2 ? window.innerHeight : 1);
     if (dy === 0 || Math.abs(dy) < Math.abs(e.deltaX)) return; // mostly horizontal: tables scroll natively
     var now = e.timeStamp || performance.now(), dir = dy > 0 ? 1 : -1;
-    var abs = Math.abs(dy);
-    // Fresh: a pause, a change of direction, or a spike (inertia decays smoothly, so a jump is a new finger movement)
-    var fresh = now - lastWheel >= 120 || dir !== lastDir || (abs >= 16 && abs >= 1.8 * lastAbs);
-    lastWheel = now; lastDir = dir; lastAbs = abs;
+    var abs = Math.abs(dy), fresh = now - lastWheel >= 180 || dir !== lastDir;
+    // A new flick inside a trackpad's inertia tail: the deltas must first decay well below the gesture's peak,
+    // then jump back up. The ramp-up at the start of one flick never counts as a second one.
+    if (!fresh && now - gestureAt >= 250 && trough <= 0.3 * peak && abs >= 16 && abs >= 2.5 * trough) fresh = true;
+    if (fresh) { peak = trough = abs; gestureAt = now; }
+    else if (abs >= peak) peak = trough = abs;
+    else if (abs < trough) trough = abs;
+    lastWheel = now; lastDir = dir;
     if (animating) { e.preventDefault(); if (fresh) during(dir); return; }
     if (locked && !fresh) { e.preventDefault(); return; }
     var p = plan(dir, dy);
@@ -124,7 +128,7 @@
     var t = e.target;
     if (t && t.closest && t.closest('a[href], button, summary, input, textarea, select, [contenteditable], .table-scroll')) return;
     var k = e.key, dir = 0, delta = 0, pageSize = window.innerHeight * 0.875;
-    if (k === 'Home' || k === 'End') { e.preventDefault(); queue = 0; animateTo(k === 'Home' ? 0 : maxScroll(), 1100); return; }
+    if (k === 'Home' || k === 'End') { e.preventDefault(); queue = 0; animateTo(k === 'Home' ? 0 : maxScroll(), 1400); return; }
     if (k === 'PageDown' || (k === ' ' && !e.shiftKey)) { dir = 1; delta = pageSize; }
     else if (k === 'PageUp' || (k === ' ' && e.shiftKey)) { dir = -1; delta = -pageSize; }
     else if (k === 'ArrowDown') { dir = 1; delta = 40; }
