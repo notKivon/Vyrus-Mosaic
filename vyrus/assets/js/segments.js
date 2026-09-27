@@ -2,9 +2,8 @@
    Paging only moves the page in response to the visitor's own wheel or keys; nothing is read, counted or stored. */
 (function () {
   var root = document.documentElement;
-  var sections = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('[data-seg]'));
   if (!sections.length || !window.matchMedia) return;
-  var names = ['Top', 'The network', 'How it works', 'The picture', 'Products', 'Compliance', 'Testimonial', 'Briefing'];
   var nav = document.querySelector('.site-nav');
   var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
   var desktop = window.matchMedia('(min-width: 960px) and (min-height: 600px) and (pointer: fine)');
@@ -14,10 +13,10 @@
   function setNav() { root.style.setProperty('--nav-h', navH() + 'px'); }
   function maxScroll() { return Math.max(0, root.scrollHeight - window.innerHeight); }
   function paging() { return desktop.matches; }
-  function syncPaging() { root.classList.toggle('is-paging', paging()); }
+  function syncPaging() { root.classList.toggle('vy-paging', paging()); }
 
   setNav();
-  root.classList.add('is-seg');
+  root.classList.add('vy-seg');
   syncPaging();
 
   // One stop per section. A section taller than about 1.5 screens is a scroll-through zone [start, end].
@@ -47,7 +46,7 @@
     target = Math.round(clamp(target, 0, maxScroll()));
     var from = window.scrollY, dist = target - from;
     if (reduceMq.matches || Math.abs(dist) < 1) { jump(target); animating = false; locked = true; return; }
-    if (dur == null) dur = Math.abs(dist) > window.innerHeight * 0.5 ? 1150 : 700;
+    if (dur == null) dur = Math.abs(dist) > window.innerHeight * 0.5 ? 1100 : 700;
     animating = true;
     var t0 = performance.now();
     anim = requestAnimationFrame(function step(now) {
@@ -123,11 +122,11 @@
     else window.scrollTo({ top: target, behavior: reduceMq.matches ? 'auto' : 'smooth' });
   }
 
-  // In-page anchors use the same movement while paging (briefing buttons open the dialog in site.js)
+  // In-page anchors use the same movement while paging (purchase buttons open the dialog in site.js)
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !paging()) return;
     var a = e.target.closest && e.target.closest('a[href^="#"]');
-    if (!a || a.matches('.skip-link, [data-briefing]')) return;
+    if (!a || a.matches('.skip-link, [data-purchase]')) return;
     var id = a.getAttribute('href').slice(1);
     var el = id && id !== 'main' && document.getElementById(id);
     if (!el) return;
@@ -136,23 +135,16 @@
     if (history.replaceState) history.replaceState(null, '', '#' + id);
   });
 
-  /* Pager: tracks the current segment from the scroll position */
-  var pager = document.createElement('nav');
-  pager.className = 'seg-pager';
-  pager.setAttribute('aria-label', 'Page segments');
-  var list = document.createElement('ol');
-  pager.appendChild(list);
-  var buttons = sections.map(function (section, i) {
-    var li = document.createElement('li');
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.innerHTML = '<span class="lbl t-label">' + (names[i] || 'Segment ' + (i + 1)) + '</span><span class="sq" aria-hidden="true"></span>';
-    b.addEventListener('click', function () { goTo(section); });
-    li.appendChild(b);
-    list.appendChild(li);
-    return b;
-  });
-  document.body.appendChild(pager);
+  /* Pager: one link per segment in the page's own <nav>, tracking the current segment from the scroll position */
+  var pager = document.querySelector('.seg-pager');
+  var buttons = pager ? sections.map(function (section) {
+    var a = document.createElement('a');
+    a.href = '#' + section.id;
+    a.innerHTML = '<span class="lbl t-label">' + section.getAttribute('data-seg') + '</span><span class="sq" aria-hidden="true"></span>';
+    pager.appendChild(a);
+    return a;
+  }) : [];
+  if (pager) pager.hidden = false;
 
   var active = -1, queued = false;
   function track() {
@@ -162,10 +154,11 @@
     if (window.scrollY >= maxScroll() - 2) current = sections.length - 1;
     if (current === active) return;
     active = current;
-    buttons.forEach(function (b, j) { b.setAttribute('aria-current', j === current ? 'true' : 'false'); });
+    buttons.forEach(function (b, j) { if (j === current) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
   }
   window.addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(track); } }, { passive: true });
   window.addEventListener('resize', function () { setNav(); syncPaging(); track(); });
   if (desktop.addEventListener) desktop.addEventListener('change', syncPaging);
   track();
+  window.vySegments = { animating: function () { return animating; } };
 })();
