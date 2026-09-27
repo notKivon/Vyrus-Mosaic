@@ -34,3 +34,31 @@
   .tt-callout .t-heading{font-size:var(--callout-size-s);line-height:var(--callout-leading-s)}
 }
 @media (max-width:640px){.turntable{padding:var(--space-12) 0}.tt-copy{gap:var(--space-2)}}
+
+/* Live (turntable.js): pinned for 250vh; photos stack for the scrub; callouts and leader lines switch on with progress */
+.turntable.is-live{height:250vh;padding:0;position:relative}
+.turntable.is-live .tt-stage{position:sticky;top:var(--nav-h);height:calc(100svh - var(--nav-h));display:flex;align-items:center;overflow:hidden;padding:var(--space-8) 0}
+.turntable.is-live .tt-view{width:min(100%,calc((100svh - var(--nav-h) - 2 * var(--space-8)) * 4 / 3))}
+.turntable.is-live .tt-photos img+img{display:block;opacity:0}
+.tt-view.is-3d .tt-photos{visibility:hidden}
+.tt-model{position:absolute;inset:0;width:100%;height:100%;background-color:transparent;--poster-color:transparent;pointer-events:none}
+.turntable.is-live .tt-callout{opacity:0;transition:opacity .25s .35s}
+.turntable.is-live .tt-callout.on{opacity:1}
+.tt-leaders path{fill:none;stroke:var(--aqua-strong);stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s cubic-bezier(.65,0,.35,1)}
+.tt-leaders circle{fill:var(--aqua);opacity:0;transition:opacity .2s .45s}
+.tt-leaders .on path{stroke-dashoffset:0}
+.tt-leaders .on circle{opacity:1}
+@media (max-width:899px){
+  .turntable.is-live .tt-stage{padding:var(--space-4) 0}
+  .turntable.is-live .tt-view{width:100%}
+  .turntable.is-live .tt-box{width:min(100%,calc((100svh - var(--nav-h)) * 0.42 * 4 / 3))}
+  .turntable.is-live .tt-callout{transition:opacity .25s}
+}
+/* Reduced motion: unpinned, one screen tall, front photo with every callout and line shown */
+@media (prefers-reduced-motion:reduce){
+  .turntable.is-live{height:auto}
+  .turntable.is-live .tt-stage{position:relative;top:auto;height:auto;min-height:calc(100svh - var(--nav-h))}
+  .turntable.is-live .tt-callout,.tt-leaders circle{opacity:1;transition:none}
+  .tt-leaders path{stroke-dashoffset:0;transition:none}
+  .tt-meter{visibility:hidden}
+}
