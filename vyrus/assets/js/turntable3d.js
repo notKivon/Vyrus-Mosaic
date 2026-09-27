@@ -21,6 +21,17 @@ if (box && view && customElements.get('model-viewer') && !window.matchMedia('(pr
   };
   Object.keys(attributes).forEach(function (name) { viewer.setAttribute(name, attributes[name]); });
   viewer.className = 'tt-model';
+  // One hotspot per callout at its feature's position on the model, so the leader lines can follow the turn
+  Array.prototype.forEach.call(document.querySelectorAll('.tt-callout'), function (c, i) {
+    var hs = document.createElement('div');
+    hs.className = 'tt-hs';
+    hs.setAttribute('slot', 'hotspot-' + (i + 1));
+    hs.setAttribute('data-position', c.getAttribute('data-hotspot'));
+    hs.setAttribute('data-normal', c.getAttribute('data-normal'));
+    hs.setAttribute('data-visibility-attribute', 'visible');
+    hs.setAttribute('aria-hidden', 'true');
+    viewer.appendChild(hs);
+  });
   box.appendChild(viewer);
   viewer.addEventListener('load', function () {
     view.classList.add('is-3d');

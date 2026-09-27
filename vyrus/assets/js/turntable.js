@@ -16,33 +16,66 @@
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function navH() { return nav ? nav.getBoundingClientRect().height : 0; }
 
-  // Leader lines: from the card's mid-edge nearest the anchor, a short horizontal run, then straight to the anchor
+  // Leader lines: from a fixed mid-edge of each card (right edge for the left cards, left edge for the right cards),
+  // a short horizontal run, then straight to the feature. The SVG is built on resize; ends move every frame in 3D.
   function drawLeaders() {
     if (!svg) return;
     var box = svg.getBoundingClientRect();
     svg.innerHTML = '';
     groups = [];
-    if (!box.width) return; // phones: no leader lines
+    if (!box.width) { sync(); return; } // phones: no leader lines
     svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
     var ns = 'http://www.w3.org/2000/svg';
-    groups = callouts.map(function (c) {
-      var r = c.getBoundingClientRect();
+    groups = callouts.map(function (c, i) {
+      var r = c.getBoundingClientRect(), left = i % 2 === 0;
       var an = c.getAttribute('data-anchor').split(',').map(Number);
-      var ax = an[0] * box.width, ay = an[1] * box.height;
-      var leftSide = r.left + r.width / 2 - box.left < ax;
-      var sx = (leftSide ? r.right : r.left) - box.left, sy = r.top + r.height / 2 - box.top;
-      var ex = sx + (leftSide ? 1 : -1) * Math.min(40, Math.abs(ax - sx) / 3);
       var g = document.createElementNS(ns, 'g');
       var p = document.createElementNS(ns, 'path');
-      p.setAttribute('d', 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) + 'H' + ex.toFixed(1) + 'L' + ax.toFixed(1) + ' ' + ay.toFixed(1));
       p.setAttribute('pathLength', '1');
       var dot = document.createElementNS(ns, 'circle');
-      dot.setAttribute('cx', ax.toFixed(1)); dot.setAttribute('cy', ay.toFixed(1)); dot.setAttribute('r', '4');
+      dot.setAttribute('r', '4');
       g.appendChild(p); g.appendChild(dot); svg.appendChild(g);
-      return g;
+      return { g: g, path: p, dot: dot, dir: left ? 1 : -1, hs: null,
+        sx: (left ? r.right : r.left) - box.left, sy: r.top + r.height / 2 - box.top,
+        ax: an[0] * box.width, ay: an[1] * box.height };
     });
     update();
+    sync();
   }
+
+  function aim(l, x, y) {
+    var ex = l.sx + l.dir * Math.min(40, Math.abs(x - l.sx) / 3);
+    l.path.setAttribute('d', 'M' + l.sx.toFixed(1) + ' ' + l.sy.toFixed(1) + 'H' + ex.toFixed(1) + 'L' + x.toFixed(1) + ' ' + y.toFixed(1));
+    l.dot.setAttribute('cx', x.toFixed(1)); l.dot.setAttribute('cy', y.toFixed(1));
+  }
+
+  // Photo mode (model loading or failed, reduced motion): the front-photo anchors, faint while another view shows
+  function aimPhotos() {
+    var away = !reduceMq.matches && photos.length > 0 && parseFloat(photos[0].style.opacity || '1') < 0.5;
+    groups.forEach(function (l) { aim(l, l.ax, l.ay); l.g.classList.toggle('is-away', away); });
+  }
+
+  // 3D mode: each line ends on its hotspot's projected position, faint while the feature faces away
+  function aimModel() {
+    var off = model.getBoundingClientRect(), box = svg.getBoundingClientRect();
+    groups.forEach(function (l, i) {
+      var q = model.queryHotspot && model.queryHotspot('hotspot-' + (i + 1));
+      if (!q) { aim(l, l.ax, l.ay); return; }
+      if (!l.hs) l.hs = model.querySelector('[slot="hotspot-' + (i + 1) + '"]');
+      aim(l, q.canvasPosition.x + off.left - box.left, q.canvasPosition.y + off.top - box.top);
+      l.g.classList.toggle('is-away', !!l.hs && !l.hs.hasAttribute('data-visible'));
+    });
+  }
+
+  // model-viewer renders a frame after each orbit change, so the ends are read every frame while the turntable is on screen
+  var loop = 0, onScreen = false;
+  function frame() { loop = requestAnimationFrame(frame); aimModel(); }
+  function sync() {
+    var run = !!model && onScreen && groups.length > 0;
+    if (run && !loop) loop = requestAnimationFrame(frame);
+    if (!run && loop) { cancelAnimationFrame(loop); loop = 0; }
+  }
+  if (window.IntersectionObserver) new IntersectionObserver(function (e) { onScreen = e[0].isIntersecting; sync(); }).observe(tt);
 
   function progress() {
     var nh = navH(), top = tt.getBoundingClientRect().top + window.scrollY - nh;
@@ -70,12 +103,13 @@
     callouts.forEach(function (c, i) {
       var on = shown >= Number(c.getAttribute('data-at'));
       c.classList.toggle('on', on);
-      if (groups[i]) groups[i].classList.toggle('on', on);
+      if (groups[i]) groups[i].g.classList.toggle('on', on);
     });
+    if (!model) aimPhotos();
   }
   function request() { if (!queued) { queued = true; requestAnimationFrame(update); } }
 
-  window.vyTurntable = { setModel: function (viewer) { model = viewer; update(); } };
+  window.vyTurntable = { setModel: function (viewer) { model = viewer; update(); sync(); } };
   window.addEventListener('scroll', request, { passive: true });
   var resizeTimer = 0;
   window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawLeaders, 120); });

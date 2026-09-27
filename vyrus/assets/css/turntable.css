@@ -44,10 +44,14 @@
 .tt-model{position:absolute;inset:0;width:100%;height:100%;background-color:transparent;--poster-color:transparent;pointer-events:none}
 .turntable.is-live .tt-callout{opacity:0;transition:opacity .25s .35s}
 .turntable.is-live .tt-callout.on{opacity:1}
-.tt-leaders path{fill:none;stroke:var(--aqua-strong);stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s cubic-bezier(.65,0,.35,1)}
-.tt-leaders circle{fill:var(--aqua);opacity:0;transition:opacity .2s .45s}
+.tt-leaders path{fill:none;stroke:var(--aqua-strong);stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s cubic-bezier(.65,0,.35,1),opacity .3s}
+.tt-leaders circle{fill:var(--aqua);stroke:transparent;stroke-width:1.5;opacity:0;transition:opacity .2s .45s,fill .3s,stroke .3s}
 .tt-leaders .on path{stroke-dashoffset:0}
 .tt-leaders .on circle{opacity:1}
+/* A feature turned away from the viewer: the line stays on it, faint, with a hollow dot */
+.tt-leaders .is-away path{opacity:.25}
+.tt-leaders .is-away circle{fill:transparent;stroke:var(--aqua)}
+.tt-hs{width:0;height:0;pointer-events:none}
 @media (max-width:899px){
   .turntable.is-live .tt-stage{padding:var(--space-4) 0}
   .turntable.is-live .tt-view{width:100%}
