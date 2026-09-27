@@ -36,8 +36,9 @@
     return list;
   }
 
-  /* Eased paging: easeInOutCubic, driven one frame at a time */
-  var anim = 0, animating = false, locked = false, lastWheel = 0, lastDir = 0;
+  /* Eased paging: easeInOutCubic, driven one frame at a time. A fresh gesture during a move queues
+     up to two more steps in the same direction, or retargets at once in the other. */
+  var anim = 0, animating = false, locked = false, lastWheel = 0, lastDir = 0, lastAbs = 0, moveDir = 0, queue = 0;
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function jump(top) { window.scrollTo({ top: top, behavior: 'instant' }); }
 
@@ -45,17 +46,37 @@
     cancelAnimationFrame(anim);
     target = Math.round(clamp(target, 0, maxScroll()));
     var from = window.scrollY, dist = target - from;
-    if (reduceMq.matches || Math.abs(dist) < 1) { jump(target); animating = false; locked = true; return; }
-    if (dur == null) dur = Math.abs(dist) > window.innerHeight * 0.5 ? 1100 : 700;
+    if (reduceMq.matches || Math.abs(dist) < 1) { jump(target); animating = false; locked = true; queue = 0; return; }
+    if (dur == null) dur = Math.abs(dist) > window.innerHeight * 0.5 ? 900 : 600;
     animating = true;
+    moveDir = dist > 0 ? 1 : -1;
     var t0 = performance.now();
     anim = requestAnimationFrame(function step(now) {
       var t = Math.min(1, (now - t0) / dur);
       jump(from + dist * ease(t));
       if (t < 1) { anim = requestAnimationFrame(step); return; }
       animating = false;
-      locked = true; // trackpad inertia after the move must die out before the next gesture counts
+      locked = true; // inertia after the move is ignored until a fresh gesture
+      if (queue > 0) chain();
     });
+  }
+
+  // Queued steps continue from the stop just reached; a tall zone ends the chain so it scrolls through natively
+  function chain() {
+    queue--;
+    var p = plan(moveDir, moveDir);
+    if (p.to != null) animateTo(p.to);
+    else queue = 0;
+  }
+
+  // A fresh gesture or key press while a move animates
+  function during(dir) {
+    if (dir === moveDir) { if (queue < 2) queue++; return; }
+    queue = 0;
+    var p = plan(dir, dir);
+    if (p.to != null) animateTo(p.to, 600);
+    else if (p.clamp != null) animateTo(p.clamp, 450);
+    else { cancelAnimationFrame(anim); animating = false; locked = true; }
   }
 
   // What one gesture in direction dir does: {pass} lets native scrolling through a tall zone,
@@ -83,9 +104,12 @@
     var dy = e.deltaY * (e.deltaMode === 1 ? 40 : e.deltaMode === 2 ? window.innerHeight : 1);
     if (dy === 0 || Math.abs(dy) < Math.abs(e.deltaX)) return; // mostly horizontal: tables scroll natively
     var now = e.timeStamp || performance.now(), dir = dy > 0 ? 1 : -1;
-    var fresh = now - lastWheel >= 180 || dir !== lastDir;
-    lastWheel = now; lastDir = dir;
-    if (animating || (locked && !fresh)) { e.preventDefault(); return; }
+    var abs = Math.abs(dy);
+    // Fresh: a pause, a change of direction, or a spike (inertia decays smoothly, so a jump is a new finger movement)
+    var fresh = now - lastWheel >= 120 || dir !== lastDir || (abs >= 16 && abs >= 1.8 * lastAbs);
+    lastWheel = now; lastDir = dir; lastAbs = abs;
+    if (animating) { e.preventDefault(); if (fresh) during(dir); return; }
+    if (locked && !fresh) { e.preventDefault(); return; }
     var p = plan(dir, dy);
     if (p.pass) { locked = false; return; }
     e.preventDefault();
@@ -100,13 +124,13 @@
     var t = e.target;
     if (t && t.closest && t.closest('a[href], button, summary, input, textarea, select, [contenteditable], .table-scroll')) return;
     var k = e.key, dir = 0, delta = 0, pageSize = window.innerHeight * 0.875;
-    if (k === 'Home' || k === 'End') { e.preventDefault(); animateTo(k === 'Home' ? 0 : maxScroll(), 1400); return; }
+    if (k === 'Home' || k === 'End') { e.preventDefault(); queue = 0; animateTo(k === 'Home' ? 0 : maxScroll(), 1100); return; }
     if (k === 'PageDown' || (k === ' ' && !e.shiftKey)) { dir = 1; delta = pageSize; }
     else if (k === 'PageUp' || (k === ' ' && e.shiftKey)) { dir = -1; delta = -pageSize; }
     else if (k === 'ArrowDown') { dir = 1; delta = 40; }
     else if (k === 'ArrowUp') { dir = -1; delta = -40; }
     if (!dir) return;
-    if (animating) { e.preventDefault(); return; }
+    if (animating) { e.preventDefault(); if (!e.repeat) during(dir); return; }
     var p = plan(dir, delta);
     if (p.pass) return;
     e.preventDefault();
@@ -118,6 +142,7 @@
     var i = sections.indexOf(el), target = null;
     stops().forEach(function (s) { if (s.index === i && i !== -1) target = s.start; });
     if (target == null) target = el.getBoundingClientRect().top + window.scrollY - navH();
+    queue = 0;
     if (paging()) animateTo(target);
     else window.scrollTo({ top: target, behavior: reduceMq.matches ? 'auto' : 'smooth' });
   }
