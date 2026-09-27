@@ -1,0 +1,28 @@
+/* The picture (zoom.js). Without JS, or under reduced motion: copy beside the finished static map.
+   Once zoom.js runs (.is-live): a 300vh scroll-through section with a sticky stage holding the canvas, scrim and copy. */
+.zoom-inner{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-8) var(--space-12);align-items:center}
+.zoom-copy{display:grid;gap:var(--space-6);justify-items:start}
+.zoom-copy h2{max-width:14ch}
+.zoom-caption{color:var(--ink-muted)}
+.zoom-caption.is-complete{color:var(--brass-strong)}
+.zoom-map{width:100%;height:auto}
+.tr{fill:var(--surface-raised)}
+.tp{fill:var(--blue);opacity:.8}
+.tks{fill:var(--brass-strong)}
+@media (max-width:959px){.zoom-inner{grid-template-columns:minmax(0,1fr)}}
+
+.zoom.is-live{height:300vh;padding:0;position:relative}
+html.is-seg main>section.zoom.is-live{display:block;align-content:normal}
+.zoom.is-live .zoom-map{display:none}
+.zoom.is-live .zoom-stage{position:sticky;top:var(--nav-h);height:calc(100svh - var(--nav-h));overflow:hidden;background:var(--ground)}
+.zoom-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.zoom-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 82%,transparent) 30%,transparent 46%)}
+.zoom.is-live .zoom-inner{position:relative;z-index:1;height:100%;display:flex;align-items:center}
+.zoom.is-live .zoom-copy{max-width:min(38vw,460px)}
+.zoom-hint{position:absolute;z-index:1;left:66%;bottom:var(--space-6);transform:translateX(-50%);margin:0;color:var(--ink-muted);white-space:nowrap;pointer-events:none}
+@media (max-width:759px){
+  .zoom-scrim{background:linear-gradient(180deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 82%,transparent) 28%,transparent 45%)}
+  .zoom.is-live .zoom-inner{align-items:flex-start;padding-top:var(--space-8)}
+  .zoom.is-live .zoom-copy{max-width:none;gap:var(--space-4)}
+  .zoom-hint{left:50%}
+}
