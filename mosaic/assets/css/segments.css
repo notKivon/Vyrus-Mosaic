@@ -1,0 +1,38 @@
+/* Full-screen segments and the segment pager (segments.js). Everything here waits for html.is-seg, so without JS the page is a normal long page. */
+
+/* Every main section fills the screen below the sticky nav, content centred vertically */
+html.is-seg main>section{min-height:calc(100svh - var(--nav-h));display:grid;align-content:center}
+html.is-seg main>section>*{width:100%}
+/* While JS paging is active it drives scrollTo itself, so CSS smooth scrolling must not fight it */
+html.is-paging{scroll-behavior:auto}
+
+/* The testimonial has a screen to itself, so it is set at display size */
+html.is-seg .quote-band .t-quote{font-size:var(--quote-display-size);line-height:var(--quote-display-leading);letter-spacing:var(--quote-display-tracking)}
+html.is-seg .quote-band .quote{gap:var(--space-6)}
+
+/* Segment pager: one square per segment on the right edge, the current one in brass */
+.seg-pager{display:none}
+.seg-pager ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-end;gap:var(--space-1)}
+.seg-pager button{appearance:none;border:0;background:none;padding:var(--space-2);cursor:pointer;display:block;position:relative;color:var(--ink-muted)}
+.seg-pager .sq{display:block;width:var(--pager-size);height:var(--pager-size);border-radius:1px;background:var(--stone);box-shadow:inset 0 0 0 1px var(--line-strong);transition:background .25s,transform .25s}
+.seg-pager .lbl{position:absolute;right:100%;top:50%;opacity:0;transform:translate(6px,-50%);transition:opacity .2s,transform .2s;white-space:nowrap;pointer-events:none}
+.seg-pager button:hover .lbl,.seg-pager button:focus-visible .lbl{opacity:1;transform:translate(0,-50%)}
+.seg-pager button[aria-current="true"] .sq{background:var(--brass);box-shadow:none;transform:scale(1.2)}
+.seg-pager button[aria-current="true"] .lbl{color:var(--brass-strong)}
+.seg-pager button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (min-width:960px){
+  html.is-seg .seg-pager{display:block;position:fixed;right:var(--space-4);top:50%;transform:translateY(-50%);z-index:25}
+}
+@media (prefers-reduced-motion:reduce){
+  .seg-pager .sq,.seg-pager .lbl{transition:none}
+}
+
+/* Hero (hero.js): the italic phrase resolves from tiles; the tiles then fly in, each turning about its own centre */
+.resolve-word{display:inline-block;white-space:nowrap;position:relative}
+.resolve-word.is-resolving{color:transparent}
+.resolve-word canvas{position:absolute;pointer-events:none;transition:opacity .3s ease}
+.resolve-word canvas.is-done{opacity:0}
+.baseline-probe{display:inline-block;width:0;height:0;vertical-align:baseline}
+.hero-art>*{transform-box:fill-box;transform-origin:center}
+.hero-art{overflow:visible}
+.hero{overflow-x:clip}

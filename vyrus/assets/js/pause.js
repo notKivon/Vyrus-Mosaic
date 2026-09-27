@@ -1,8 +1,8 @@
-/* "Pause my journey": a four-screen dialog on the account page that loops instead of ending.
+/* "Pause my journey": a four-screen dialog on the account page and the retention band that loops instead of ending.
    Inserted by JS, so without it the page is unchanged. Keyboard and touch always work first time;
    only a mouse pointer sees "Continue pausing" step aside, twice per visit, never under reduced motion. */
 (function () {
-  var cards = document.querySelector('.account-grid');
+  var cards = document.querySelector('.account-grid, [data-pause-hook]');
   if (!cards || typeof HTMLDialogElement !== 'function') return;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cursor = '<span class="vy-cursor" aria-hidden="true">_</span>';

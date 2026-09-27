@@ -18,9 +18,16 @@
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/turntable.css">
+  <link rel="stylesheet" href="assets/css/segments.css">
   <script src="assets/js/site.js" defer></script>
   <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/pause.js" defer></script>
+  <script src="assets/js/turntable.js" defer></script>
+  <script src="assets/js/segments.js" defer></script>
+  <script src="assets/js/listening.js" defer></script>
   <script type="module" src="assets/js/mask3d.js"></script>
+  <script type="module" src="assets/js/turntable3d.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,11 +45,11 @@
   </header>
 
   <main id="main">
-    <section class="band-aqua hero" aria-labelledby="hero-title">
+    <section class="band-aqua hero seg" id="top" data-seg="breathe smarter" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="t-label">AI-native · Cloud-enabled · V1.0</p>
-          <h1 class="t-display-xl" id="hero-title"><span class="js-type">breathe smarter</span><span class="vy-cursor blink" aria-hidden="true">_</span></h1>
+          <h1 class="t-display-xl" id="hero-title"><span class="js-decode">breathe smarter</span><span class="vy-cursor blink" aria-hidden="true">_</span></h1>
           <p class="t-heading hero-sub">the face mask that knows you better than you do.</p>
           <p class="t-body measure">Vyrus is an AI-native, cloud-enabled, always-on face mask with an agentic assistant that personalises every breath before you take it.</p>
           <div class="btn-row">
@@ -65,7 +72,7 @@
       </div>
     </section>
 
-    <section class="section" id="features" aria-labelledby="features-title">
+    <section class="section seg" id="features" data-seg="agentic air." aria-labelledby="features-title">
       <div class="container stack">
         <h2 class="t-display-l" id="features-title">agentic air.</h2>
         <div class="feature-grid">
@@ -103,38 +110,65 @@
       </div>
     </section>
 
-    <section class="theme-deep section" id="specs" aria-labelledby="specs-title">
-      <div class="container stack">
-        <h2 class="t-display-l" id="specs-title">built to know you.</h2>
-        <div class="stage-grid">
-          <figure class="stage-hero">
-            <img src="assets/img/mask-deep.jpg"
-                 srcset="assets/img/mask-deep-640.jpg 640w, assets/img/mask-deep.jpg 1280w"
-                 sizes="(min-width: 1200px) 680px, (min-width: 900px) 58vw, 100vw"
-                 width="1280" height="960" loading="lazy"
-                 alt="Vyrus mask, three-quarter view, aqua shell with diesel canister, lit on a dark stage">
-          </figure>
-          <div class="readout">
-            <div class="readout-head">
-              <p class="t-label">Spec readout</p>
-              <span class="vy-chip vy-chip-rec">Recording</span>
-            </div>
-            <p class="t-heading">5.0 L · 42 dB · 4K/60</p>
-            <dl class="readout-rows t-spec">
-              <div><dt>Biometric Lens™</dt><dd>4K/60</dd></div>
-              <div><dt>Always-Listening Assistant</dt><dd>42 dB</dd></div>
-              <div><dt>Vyrus Core™</dt><dd>5.0 L</dd></div>
-              <div><dt>Sponsored Moments</dt><dd>Cheek display</dd></div>
-              <div><dt>Retention Assurance™</dt><dd>Dormant</dd></div>
-              <div><dt>Connectivity</dt><dd>Cloud-native, always-on</dd></div>
-            </dl>
+    <section class="theme-deep turntable" id="specs" data-seg="built to know you." data-seg-tall aria-labelledby="specs-title">
+      <div class="tt-stage">
+        <div class="container tt-grid">
+          <div class="tt-copy">
+            <h2 class="t-display-l" id="specs-title">built to know you.</h2>
+            <p class="t-heading tt-spec">5.0 L · 42 dB · 4K/60</p>
+            <div class="tt-meter t-spec" aria-hidden="true"><span class="tt-deg">000°</span><span class="tt-track"><span class="tt-fill"></span></span></div>
           </div>
+          <div class="tt-view">
+            <div class="tt-box">
+              <div class="tt-photos">
+                <img src="assets/img/mask-front-640.jpg" srcset="assets/img/mask-front-640.jpg 640w, assets/img/mask-front.jpg 1280w"
+                     sizes="(min-width: 1200px) 720px, (min-width: 900px) 62vw, 100vw" width="640" height="480" loading="lazy"
+                     alt="Vyrus mask, front view, showing the lens, cheek display and chin microphone">
+                <img src="assets/img/mask-hero-640.jpg" srcset="assets/img/mask-hero-640.jpg 640w, assets/img/mask-hero.jpg 1280w"
+                     sizes="(min-width: 1200px) 720px, (min-width: 900px) 62vw, 100vw" width="640" height="480" loading="lazy" aria-hidden="true"
+                     alt="">
+                <img src="assets/img/mask-side-640.jpg" srcset="assets/img/mask-side-640.jpg 640w, assets/img/mask-side.jpg 1280w"
+                     sizes="(min-width: 1200px) 720px, (min-width: 900px) 62vw, 100vw" width="640" height="480" loading="lazy"
+                     alt="Vyrus mask, side view, showing the canister, exhaust stack and straps">
+                <img src="assets/img/mask-deep-640.jpg" srcset="assets/img/mask-deep-640.jpg 640w, assets/img/mask-deep.jpg 1280w"
+                     sizes="(min-width: 1200px) 720px, (min-width: 900px) 62vw, 100vw" width="640" height="480" loading="lazy"
+                     alt="Vyrus mask, three-quarter view, aqua shell with diesel canister, lit on a dark stage">
+              </div>
+            </div>
+            <svg class="tt-leaders" aria-hidden="true" focusable="false"></svg>
+            <ul class="tt-callouts">
+              <li class="tt-callout" data-at="0.12" data-anchor="0.47,0.40"><span class="t-spec">Biometric Lens™</span><b class="t-heading">4K/60</b></li>
+              <li class="tt-callout" data-at="0.32" data-anchor="0.66,0.46"><span class="t-spec">Vyrus Core™</span><b class="t-heading">5.0 L</b></li>
+              <li class="tt-callout" data-at="0.52" data-anchor="0.49,0.70"><span class="t-spec">Always-Listening Assistant</span><b class="t-heading">42 dB</b></li>
+              <li class="tt-callout" data-at="0.72" data-anchor="0.58,0.58"><span class="t-spec">Retention Assurance™</span><b class="t-heading">Dormant</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="theme-deep section seg" id="readout" data-seg="Spec readout" aria-label="Spec readout">
+      <div class="container readout-grid">
+        <div class="readout">
+          <div class="readout-head">
+            <p class="t-label">Spec readout</p>
+            <span class="vy-chip vy-chip-rec">Recording</span>
+          </div>
+          <p class="t-heading">5.0 L · 42 dB · 4K/60</p>
+          <dl class="readout-rows t-spec">
+            <div><dt>Biometric Lens™</dt><dd>4K/60</dd></div>
+            <div><dt>Always-Listening Assistant</dt><dd>42 dB</dd></div>
+            <div><dt>Vyrus Core™</dt><dd>5.0 L</dd></div>
+            <div><dt>Sponsored Moments</dt><dd>Cheek display</dd></div>
+            <div><dt>Retention Assurance™</dt><dd>Dormant</dd></div>
+            <div><dt>Connectivity</dt><dd>Cloud-native, always-on</dd></div>
+          </dl>
         </div>
         <div class="stage-thumbs">
           <figure>
             <img src="assets/img/mask-front-640.jpg"
                  srcset="assets/img/mask-front-640.jpg 640w, assets/img/mask-front.jpg 1280w"
-                 sizes="(min-width: 1200px) 576px, 50vw"
+                 sizes="(min-width: 1200px) 340px, (min-width: 900px) 28vw, 50vw"
                  width="640" height="480" loading="lazy"
                  alt="Vyrus mask, front view, showing the lens, cheek display and chin microphone">
             <figcaption class="t-label">Front</figcaption>
@@ -142,7 +176,7 @@
           <figure>
             <img src="assets/img/mask-side-640.jpg"
                  srcset="assets/img/mask-side-640.jpg 640w, assets/img/mask-side.jpg 1280w"
-                 sizes="(min-width: 1200px) 576px, 50vw"
+                 sizes="(min-width: 1200px) 340px, (min-width: 900px) 28vw, 50vw"
                  width="640" height="480" loading="lazy"
                  alt="Vyrus mask, side view, showing the canister, exhaust stack and straps">
             <figcaption class="t-label">Side</figcaption>
@@ -151,11 +185,11 @@
       </div>
     </section>
 
-    <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <section class="section seg pricing-seg" id="pricing" data-seg="pick your plan." aria-labelledby="pricing-title">
       <div class="container stack">
         <h2 class="t-display-l" id="pricing-title">pick your plan.</h2>
         <div class="tier-row">
-          <article class="vy-tier tier-lite">
+          <article class="vy-tier tier-lite" data-fume="3">
             <div class="vy-tier-head"><h3 class="vy-tier-name">Lite</h3></div>
             <div class="vy-tier-price"><b>$4.99</b><span>/ month</span></div>
             <div class="vy-fume"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b></i>Particulate: continuous</div>
@@ -166,7 +200,7 @@
             </ul>
             <a class="vy-btn vy-btn-secondary" href="#pricing" data-purchase>Choose Lite</a>
           </article>
-          <article class="vy-tier is-featured tier-pro">
+          <article class="vy-tier is-featured tier-pro" data-fume="3">
             <div class="vy-tier-head"><h3 class="vy-tier-name">Pro</h3><span class="vy-chip vy-chip-aqua">Recommended</span></div>
             <div class="vy-tier-price"><b>$9.99</b><span>/ month</span></div>
             <div class="vy-fume"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b></i>Particulate: continuous</div>
@@ -177,7 +211,7 @@
             </ul>
             <a class="vy-btn vy-btn-primary" href="#pricing" data-purchase>Choose Pro</a>
           </article>
-          <article class="vy-tier tier-max">
+          <article class="vy-tier tier-max" data-fume="1">
             <div class="vy-tier-head"><h3 class="vy-tier-name">Max</h3></div>
             <div class="vy-tier-price"><b>$19.99</b><span>/ month</span></div>
             <div class="vy-fume"><i aria-hidden="true"><b class="on"></b><b></b><b></b></i>Particulate: occasional</div>
@@ -194,7 +228,11 @@
           <p class="t-body">All plans include Retention Assurance™.</p>
           <p class="t-body-s">Ambient Particulate Experience™ intensity varies by plan. EasyBreath Pro™ sold separately.</p>
         </div>
+      </div>
+    </section>
 
+    <section class="section seg" id="easybreath" data-seg="EasyBreath Pro™" aria-labelledby="easybreath-title">
+      <div class="container stack">
         <aside class="card easybreath" aria-labelledby="easybreath-title">
           <div class="easybreath-copy">
             <div class="vy-tier-head">
@@ -239,14 +277,18 @@
       </div>
     </section>
 
-    <section class="band-aqua section" aria-labelledby="retention-title">
+    <section class="band-aqua section seg" id="retention" data-seg="vyrus never lets you go." aria-labelledby="retention-title">
       <div class="container retention">
         <h2 class="t-display-l" id="retention-title">vyrus never lets you go.</h2>
         <p class="t-body measure">Every plan includes Retention Assurance™. Miss a payment and your mask starts a gentle 14:59 countdown. After that, Haptic Renewal Reminders™ arrive through the face seal until your journey resumes.</p>
         <a class="vy-btn vy-btn-ghost" href="account.html">See your account</a>
+        <div data-pause-hook hidden></div>
       </div>
     </section>
   </main>
+
+  <nav class="seg-pager" aria-label="Page segments" hidden></nav>
+  <div class="listen-pill" aria-hidden="true" hidden><span class="vy-chip vy-chip-rec">Listening…</span></div>
 
   <footer class="site-footer">
     <div class="container footer-inner">

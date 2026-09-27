@@ -33,6 +33,11 @@
   --radius-md:10px;
   --radius-lg:20px;
   --shadow-card:0 1px 0 rgba(3,36,39,0.08), 0 10px 28px rgba(3,36,39,0.08);
+  /* Session 4: segments, pager, turntable callouts on phones */
+  --nav-h:65px;
+  --pager-size:10px;
+  --callout-size-s:18px;
+  --callout-leading-s:24px;
 }
 /* deep theme: the product-shot stage section only */
 .theme-deep{
